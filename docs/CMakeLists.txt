@@ -4,7 +4,7 @@ set(DOXY_CONFIG_OUT ${CMAKE_CURRENT_BINARY_DIR}/doxy.cfg)
 
 # Set the configuration variables
 set(DOXYGEN_SRC_DIR ${CMAKE_SOURCE_DIR}/src)
-set(DOXYGEN_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+set(DOXYGEN_OUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/gen)
 
 # Configure the doxyfile
 configure_file(
