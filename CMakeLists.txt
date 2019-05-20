@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
 
 project(SampleProject VERSION 0.0.1)
 set(PROJECT_BRIEF "A sample header-only C++ library template")
+set(PROJECT_LOGO "${CMAKE_SOURCE_DIR}/logo.svg")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
