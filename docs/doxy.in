@@ -1,0 +1,18 @@
+# Configuration file for Doxygen
+
+# General project settings
+PROJECT_NAME           = @PROJECT_NAME@
+PROJECT_NUMBER         = @PROJECT_VERSION@
+
+PROJECT_BRIEF          = "@PROJECT_BRIEF@"
+PROJECT_LOGO           =
+
+# Input
+INPUT                  = @DOXYGEN_SRC_DIR@
+RECURSIVE              = YES
+
+# Output
+OUTPUT_DIRECTORY       = @DOXYGEN_OUT_DIR@
+GENERATE_LATEX         = NO
+
+# The rest can stay default

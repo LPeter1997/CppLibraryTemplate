@@ -4,7 +4,7 @@
  * Version: 0.0.1
  *
  * This file has been merged from multiple source files.
- * Generation date: 2019-05-20T16:27:21
+ * Generation date: 2019-05-20T17:31:34
  *
  * Copyright (c) 2019 Peter Lenkefi
  * Distributed under the MIT License.
@@ -28,6 +28,11 @@ T identity(T val) {
 
 namespace samplib {
 
+/**
+ * Squares the provided argument.
+ * @param val A value that supports operator* with it's same kind.
+ * @return The equivalent to val * val.
+ */
 template <typename T>
 T square(T const& val) {
     return detail::identity(val * val);

@@ -14,6 +14,11 @@
 
 namespace samplib {
 
+/**
+ * Squares the provided argument.
+ * @param val A value that supports operator* with it's same kind.
+ * @return The equivalent to val * val.
+ */
 template <typename T>
 T square(T const& val) {
     return detail::identity(val * val);
