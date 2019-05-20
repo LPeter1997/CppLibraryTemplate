@@ -1,0 +1,5 @@
+*.user
+
+# IDEs
+.idea
+.vscode
