@@ -15,4 +15,7 @@ RECURSIVE              = YES
 OUTPUT_DIRECTORY       = @DOXYGEN_OUT_DIR@
 GENERATE_LATEX         = NO
 
+# Stdout
+QUIET                  = YES
+
 # The rest can stay default

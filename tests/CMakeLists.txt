@@ -1,6 +1,4 @@
-include(CTest)
-include(${CMAKE_SOURCE_DIR}/deps/catch2/Catch.cmake)
-
+# Test executable
 add_executable(unit_tests
     main.cpp
     # Actual test source files
@@ -11,5 +9,10 @@ add_executable(unit_tests
 target_link_libraries(unit_tests PUBLIC lib_header)
 
 # Catch2
-target_include_directories(unit_tests PRIVATE ${CMAKE_SOURCE_DIR}/deps)
-catch_discover_tests(unit_tests)
+find_package(Catch2 REQUIRED)
+
+#include(CTest)
+#include(Catch)
+
+target_link_libraries(unit_tests PUBLIC Catch2::Catch2)
+#catch_discover_tests(unit_tests)

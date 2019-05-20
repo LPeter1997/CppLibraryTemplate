@@ -9,6 +9,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(${CMAKE_SOURCE_DIR}/cmake/MergeSingleHeader.cmake)
 
+# Dependencies with conan
+if(CONAN_EXPORTED)
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup()
+else()
+    include(${CMAKE_SOURCE_DIR}/cmake/Conan.cmake)
+    conan_cmake_run(
+        CONANFILE "deps/conanfile.txt"
+        BASIC_SETUP
+    )
+endif()
+
 # Merge our library
 merge_single_header(lib_header
     LIBNAME "sample library"
