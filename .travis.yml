@@ -53,6 +53,9 @@ install:
   - ${CXX} --version
   - ${CXX} -v
 
+before_script:
+  - pip install conan
+
 script:
   - mkdir -p build && cd build
   # Generate and build
