@@ -27,17 +27,18 @@ matrix:
     addons:
       apt:
         sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-8.0', 'deadsnakes']
-        packages: ['g++-8', 'clang-8.0', 'python3.6']
-    env: COMPILER=clang++-8.0
+        packages: ['g++-8', 'clang-8', 'python3.6']
+    env: COMPILER=clang++-8
     before_script:
       - pip install --user conan
+  # TODO: Fix, need Python3.6
   # OSX, Clang
-  - os: osx
-    osx_image: xcode10
-    compiler: clang
-    env: COMPILER=clang++
-    before_script:
-      - pip install --user conan
+  #- os: osx
+  #  osx_image: xcode10
+  #  compiler: clang
+  #  env: COMPILER=clang++
+  #  before_script:
+  #    - pip install --user conan
   # Linux, GCC8, coverage
   - os: linux
     dist: xenial
