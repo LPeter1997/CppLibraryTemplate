@@ -27,7 +27,7 @@ matrix:
     addons:
       apt:
         sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-8', 'deadsnakes']
-        packages: ['g++-8', 'clang-8', 'python3.6']
+        packages: ['g++-8', 'clang-8', 'libc++-dev', 'libc++abi-dev', 'python3.6']
     env:
       - COMPILER=clang++-8
       - CXXFLAGS="${CXXFLAGS} -stdlib=libc++"
@@ -52,7 +52,7 @@ matrix:
     env:
       - COMPILER=g++-8
       # CMake automatically imports this as C++ flags
-      - CXXFLAGS="-O0 -g --coverage -fno-inline -fno-inline-small-functions -fno-default-inline"
+      - CXXFLAGS="-O0 --coverage -fno-inline -fno-inline-small-functions -fno-default-inline"
     before_script:
       - pip install --user conan
       - pip install --user cpp-coveralls
