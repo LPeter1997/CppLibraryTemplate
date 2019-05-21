@@ -20,7 +20,7 @@ namespace samplib {
  * @return The equivalent to val * val.
  */
 template <typename T>
-T square(T const& val) {
+T square(T const& val) noexcept {
     return detail::identity(val * val);
 }
 

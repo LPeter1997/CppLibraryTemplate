@@ -14,7 +14,7 @@ namespace samplib {
 namespace detail {
 
 template <typename T>
-T identity(T val) {
+T identity(T val) noexcept {
     return val;
 }
 

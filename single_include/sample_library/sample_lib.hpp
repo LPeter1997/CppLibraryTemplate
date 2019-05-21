@@ -4,7 +4,7 @@
  * Version: 0.0.1
  *
  * This file has been merged from multiple source files.
- * Generation date: 2019-05-21T08:17:27
+ * Generation date: 2019-05-21T21:53:53
  *
  * Copyright (c) 2019 Peter Lenkefi
  * Distributed under the MIT License.
@@ -19,7 +19,7 @@ namespace samplib {
 namespace detail {
 
 template <typename T>
-T identity(T val) {
+T identity(T val) noexcept {
     return val;
 }
 
@@ -34,7 +34,7 @@ namespace samplib {
  * @return The equivalent to val * val.
  */
 template <typename T>
-T square(T const& val) {
+T square(T const& val) noexcept {
     return detail::identity(val * val);
 }
 
