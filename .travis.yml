@@ -7,6 +7,9 @@ notifications:
     on_success: never
     on_failure: always
 
+python:
+  - "3.6"
+
 matrix:
   include:
   # Linux, GCC8
