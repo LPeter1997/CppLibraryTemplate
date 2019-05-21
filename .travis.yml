@@ -54,7 +54,7 @@ install:
   - ${CXX} -v
 
 before_script:
-  - pip install conan
+  - pip install --user conan
 
 script:
   - mkdir -p build && cd build
