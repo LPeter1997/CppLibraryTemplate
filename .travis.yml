@@ -52,7 +52,7 @@ matrix:
     env:
       - COMPILER=g++-8
       # CMake automatically imports this as C++ flags
-      - CXXFLAGS="-O0 -g --coverage -fno-inline -fno-inline-small-functions -fno-default-inline"
+      - CXXFLAGS="-O0 -g --coverage"
     before_script:
       - pip install --user conan
       - pip install --user cpp-coveralls
