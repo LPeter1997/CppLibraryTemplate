@@ -33,6 +33,9 @@ merge_single_header(lib_header
 enable_testing()
 add_subdirectory(tests)
 
+# Examples
+add_subdirectory(examples)
+
 # Docs
 find_package(Doxygen 1.8)
 if(DOXYGEN_FOUND)

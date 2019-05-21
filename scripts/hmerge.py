@@ -38,7 +38,7 @@ STRING_LIT_INSIDE = fr'(([^\"\\\r\n]|(\\.)|{OLC})*?)'
 # Hashmark character
 HASHMARK = r'(#|\?\?=|%:)'
 # Hash forrowed by line-continuation
-DIRECTIVE = fr'{HASHMARK}{OLC}'
+DIRECTIVE = fr'{HASHMARK}( |\t|{LINE_CONTINUATION})*'
 
 # Makes a literal sequence line-continuated
 def lit_cont(str):
