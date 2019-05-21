@@ -26,9 +26,11 @@ matrix:
     compiler: clang
     addons:
       apt:
-        sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-8.0', 'deadsnakes']
+        sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-8', 'deadsnakes']
         packages: ['g++-8', 'clang-8', 'python3.6']
-    env: COMPILER=clang++-8
+    env:
+      - COMPILER=clang++
+      - CXXFLAGS="${CXXFLAGS} -stdlib=libc++"
     before_script:
       - pip install --user conan
   # TODO: Fix, need Python3.6
