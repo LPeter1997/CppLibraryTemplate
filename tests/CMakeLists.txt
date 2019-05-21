@@ -11,8 +11,8 @@ target_link_libraries(unit_tests PUBLIC lib_header)
 # Catch2
 find_package(Catch2 REQUIRED)
 
-#include(CTest)
-#include(Catch)
+include(CTest)
+include(Catch)
 
 target_link_libraries(unit_tests PUBLIC Catch2::Catch2)
-#catch_discover_tests(unit_tests)
+catch_discover_tests(unit_tests)
