@@ -11,6 +11,7 @@ matrix:
   include:
   # Linux, GCC8
   - os: linux
+    dist: xenial
     compiler: gcc
     addons:
       apt:
@@ -19,6 +20,7 @@ matrix:
     env: COMPILER=g++-8
   # Linux, Clang8
   - os: linux
+    dist: xenial
     compiler: clang
     addons:
       apt:
@@ -32,6 +34,7 @@ matrix:
     env: COMPILER=clang++
   # Linux, GCC8, coverage
   - os: linux
+    dist: xenial
     compiler: gcc
     addons:
       apt:
