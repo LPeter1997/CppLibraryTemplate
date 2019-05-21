@@ -7,30 +7,25 @@ notifications:
     on_success: never
     on_failure: always
 
-python:
-  - "3.6"
-
 matrix:
   include:
   # Linux, GCC8
   - os: linux
-    dist: xenial
     compiler: gcc
     addons:
       apt:
-        sources: ['ubuntu-toolchain-r-test']
-        packages: ['g++-8']
+        sources: ['ubuntu-toolchain-r-test', 'ppa:deadsnakes/ppa']
+        packages: ['g++-8', 'python3.6']
     env: COMPILER=g++-8
     before_script:
       - pip install --user conan
   # Linux, Clang8
   - os: linux
-    dist: xenial
     compiler: clang
     addons:
       apt:
-        sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-trusty-8.0']
-        packages: ['g++-8', 'clang-8.0']
+        sources: ['ubuntu-toolchain-r-test', 'ppa:deadsnakes/ppa', 'llvm-toolchain-trusty-8.0']
+        packages: ['g++-8', 'clang-8.0', 'python3.6']
     env: COMPILER=clang++-8.0
     before_script:
       - pip install --user conan
@@ -43,12 +38,11 @@ matrix:
       - pip install --user conan
   # Linux, GCC8, coverage
   - os: linux
-    dist: xenial
     compiler: gcc
     addons:
       apt:
-        sources: ['ubuntu-toolchain-r-test']
-        packages: ['g++-8']
+        sources: ['ubuntu-toolchain-r-test', 'ppa:deadsnakes/ppa']
+        packages: ['g++-8', 'python3.6']
     env:
       - COMPILER=g++-8
       # CMake automatically imports this as C++ flags
