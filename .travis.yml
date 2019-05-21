@@ -11,7 +11,7 @@ matrix:
   include:
   # Linux, GCC8
   - os: linux
-    distr: xenial
+    dist: xenial
     compiler: gcc
     addons:
       apt:
@@ -22,7 +22,7 @@ matrix:
       - pip install --user conan
   # Linux, Clang8
   - os: linux
-    distr: xenial
+    dist: xenial
     compiler: clang
     addons:
       apt:
@@ -40,7 +40,7 @@ matrix:
       - pip install --user conan
   # Linux, GCC8, coverage
   - os: linux
-    distr: xenial
+    dist: xenial
     compiler: gcc
     addons:
       apt:
