@@ -24,7 +24,7 @@ install:
 
 before_build:
   - cd %BUILD_DIR%
-  - cmake -DCMAKE_CXX_FLAGS="/W1" -G"Visual Studio 15 2017" ..
+  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="/W1" -G"Visual Studio 15 2017" ..
 
 build:
   parallel: true
