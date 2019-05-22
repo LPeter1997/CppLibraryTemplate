@@ -5,9 +5,6 @@ add_executable(unit_tests
     sample_library/square.cpp
 )
 
-# TESTING
-MESSAGE(STATUS "The C++ flags: " ${CMAKE_CXX_FLAGS})
-
 # Make use of our merged library
 target_link_libraries(unit_tests PUBLIC lib_header)
 
