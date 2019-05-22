@@ -26,7 +26,7 @@ endif()
 merge_single_header(lib_header
     LIBNAME "sample library"
     ROOT    "src/sample_library/sample_library.hpp"
-    PREFIX  "single_include/prefix.hpp.pre"
+    PREFIX  "single_include/prefix.pre"
     OUTPUT  "single_include/sample_library/sample_lib.hpp"
 )
 
