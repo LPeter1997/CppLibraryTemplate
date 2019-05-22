@@ -15,6 +15,7 @@ configuration:
   - Release
 
 install:
+  - set PATH=%PYTHON%;%PATH%
   - set PATH=%PATH%;%PYTHON%/Scripts/
   - pip install conan
   # Versions
