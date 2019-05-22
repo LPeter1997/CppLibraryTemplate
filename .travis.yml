@@ -70,7 +70,7 @@ install:
 script:
   - mkdir -p build && cd build
   # Generate and build
-  - cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="${CXXFLAGS}" ..
+  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="${CXXFLAGS}" ..
   - make -j 4
   # Run tests
   - CTEST_OUTPUT_ON_FAILURE=1
