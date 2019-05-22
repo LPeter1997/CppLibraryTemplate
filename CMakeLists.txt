@@ -37,7 +37,4 @@ add_subdirectory(tests)
 add_subdirectory(examples)
 
 # Docs
-find_package(Doxygen 1.8)
-if(DOXYGEN_FOUND)
-    add_subdirectory(docs)
-endif()
+add_subdirectory(docs)

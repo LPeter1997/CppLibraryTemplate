@@ -1,3 +1,9 @@
+
+find_package(Doxygen 1.8)
+if(NOT DOXYGEN_FOUND)
+    return()
+endif()
+
 # Where to get the doxyfile template and where to put the configured one
 set(DOXY_CONFIG_IN ${CMAKE_CURRENT_SOURCE_DIR}/doxy.in)
 set(DOXY_CONFIG_OUT ${CMAKE_CURRENT_BINARY_DIR}/doxy.cfg)
