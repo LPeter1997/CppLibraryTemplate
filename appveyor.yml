@@ -12,19 +12,18 @@ configuration:
   - Release
 
 install:
-  - cmmd: set PATH=%PATH%;%PYTHON%/Scripts/
-  - cmmd: pip.exe install conan
-  - cmmd: conan user # Create the conan data directory
-  - cmmd: conan --version
+  - set PATH=%PATH%;%PYTHON%/Scripts/
+  - pip install conan
+  - conan --version
 
 before_build:
   - cd %BUILD_DIR%
   - cmake -DCMAKE_CXX_FLAGS="/W1" -G"Visual Studio 15 2017" ..
 
-after_build:
-  - ctest -C Release -j 4
-
 build:
   parallel: true
   project: build/SampleProject.sln
   verbosity: minimal
+
+after_build:
+  - ctest -C Release -j 4
