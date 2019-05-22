@@ -1,8 +1,12 @@
-cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
-project(SampleProject VERSION 0.0.1)
-set(PROJECT_BRIEF "A sample header-only C++ library template")
+project(SampleProject
+    VERSION      0.0.1
+    DESCRIPTION  "A sample header-only C++ library template"
+    HOMEPAGE_URL "https://github.com/LPeter1997/CppLibraryTemplate"
+)
 set(PROJECT_LOGO "${CMAKE_SOURCE_DIR}/logo.svg")
+set(PROJECT_AUTHOR "Peter Lenkefi")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

@@ -4,12 +4,12 @@
  * Version: 0.0.1
  *
  * This file has been merged from multiple source files.
- * Generation date: 2019-05-22T15:06:55
+ * Generation date: 2019-05-22T17:26:05
  *
  * Copyright (c) 2019 Peter Lenkefi
  * Distributed under the MIT License.
  *
- * A sample single-header release library template.
+ * A sample header-only C++ library template.
  */
 
 #ifndef SAMPLE_LIBRARY
