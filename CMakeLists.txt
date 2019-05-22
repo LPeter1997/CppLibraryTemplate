@@ -5,6 +5,7 @@ set(PROJECT_BRIEF "A sample header-only C++ library template")
 set(PROJECT_LOGO "${CMAKE_SOURCE_DIR}/logo.svg")
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(${CMAKE_SOURCE_DIR}/cmake/MergeSingleHeader.cmake)
@@ -25,7 +26,7 @@ endif()
 merge_single_header(lib_header
     LIBNAME "sample library"
     ROOT    "src/sample_library/sample_library.hpp"
-    PREFIX  "single_include/prefix.hpp"
+    PREFIX  "single_include/prefix.hpp.pre"
     OUTPUT  "single_include/sample_library/sample_lib.hpp"
 )
 
