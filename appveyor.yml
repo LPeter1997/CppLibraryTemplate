@@ -4,6 +4,7 @@ image: Visual Studio 2017
 
 environment:
   BUILD_DIR: "%APPVEYOR_BUILD_FOLDER%\\build"
+  PYTHON: "C:\\Python37"
 
 platform:
   - Win32
@@ -14,7 +15,8 @@ configuration:
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
   - pip install conan
-  - conan --version
+  # Versions
+  - python --version
 
 before_build:
   - cd %BUILD_DIR%
