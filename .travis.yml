@@ -57,7 +57,7 @@ matrix:
       - pip install --user conan
       - pip install --user cpp-coveralls
     after_success:
-      - coveralls --gcov gcov-8 --gcov-options '\-lp' --root ${TRAVIS_BUILD_DIR} --build-root ${TRAVIS_BUILD_DIR}/build --extension cpp --extension hpp --exclude deps --include tests --exclude examples --include single_include
+      - coveralls --gcov gcov-8 --gcov-options '\-lp' --root ${TRAVIS_BUILD_DIR} --build-root ${TRAVIS_BUILD_DIR}/build --extension cpp --extension hpp --exclude deps --exclude tests --exclude examples --include single_include
 
 install:
   - python --version

@@ -1,5 +1,5 @@
 #include <catch2/catch.hpp>
-#include <sample_library/sample_lib.hpp>
+#include "../../single_include/sample_library/sample_lib.hpp"
 
 TEST_CASE("squaring a means a*a", "[square]") {
     REQUIRE(samplib::square(1) == 1);
