@@ -21,6 +21,7 @@ install:
   - conan user # Create data directory
   # Versions
   - python --version
+  - cmake --version
 
 before_build:
   - cd %BUILD_DIR%
