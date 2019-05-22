@@ -63,20 +63,6 @@ matrix:
       - pip install --user cpp-coveralls
     after_success:
       - coveralls --gcov gcov-8 --gcov-options '\-lp' --root ${TRAVIS_BUILD_DIR} --build-root ${TRAVIS_BUILD_DIR}/build --extension cpp --extension hpp --exclude deps --exclude tests --exclude examples --include single_include
-  # Deployment
-  - os: linux
-    dist: xenial
-    compiler: gcc
-    addons:
-      apt:
-        sources: ['ubuntu-toolchain-r-test', 'deadsnakes']
-        packages: ['g++-8', 'python3.6']
-    env:
-      - COMPILER=gcc++-8
-    before_script:
-      - pip install --user conan
-    after_success:
-      - echo "HELLO THERE"
 
 install:
   - python --version
