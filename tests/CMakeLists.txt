@@ -5,6 +5,10 @@ add_executable(unit_tests
     sample_library/square.cpp
 )
 
+# TESTING
+target_compile_options(unit_tests PUBLIC
+    -O0 --coverage -fno-inline -fno-inline-small-functions -fno-default-inline)
+
 # Make use of our merged library
 target_link_libraries(unit_tests PUBLIC lib_header)
 
