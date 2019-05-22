@@ -5,6 +5,8 @@ image: Visual Studio 2017
 environment:
   BUILD_DIR: "%APPVEYOR_BUILD_FOLDER%\\build"
   PYTHON: "C:\\Python37"
+  PYTHON_VERSION: "3.7"
+  PYTHON_ARCH: "32"
 
 platform:
   - Win32
