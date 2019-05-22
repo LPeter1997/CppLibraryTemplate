@@ -75,8 +75,8 @@ matrix:
       - COMPILER=gcc++-8
     before_script:
       - pip install --user conan
-    deploy:
-      - "HELLO THERE"
+    after_success:
+      - echo "HELLO THERE"
 
 install:
   - python --version
