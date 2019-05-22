@@ -4,13 +4,13 @@ from conans import ConanFile, tools
 
 
 class SamplelibConan(ConanFile):
-    name = "SampleLib"
-    version = "0.0.1"
-    description = "A single-header sample project"
-    topics = ("header-only", "template", "sample")
-    author = "Peter Lenkefi <lenkefi.peti@gmail.com>"
+    name = "@PROJECT_NAME@"
+    version = "@PROJECT_VERSION@"
+    description = "@PROJECT_DESCRIPTION@"
+    topics = (@PROJECT_TAGS_STR_LIST@)
+    author = "@PROJECT_AUTHOR@ <@PROJECT_EMAIL@>"
     license = "MIT"
-    url = "https://github.com/LPeter1997/CppLibraryTemplate"
+    url = "@PROJECT_HOMEPAGE_URL@"
     exports = ["LICENSE"]
     exports_sources = ["single_include/*"]
 
