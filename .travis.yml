@@ -7,6 +7,11 @@ notifications:
     on_success: never
     on_failure: always
 
+env:
+  # For everyone in the matrix
+  global:
+    - CXXFLAGS="-Wall -Wextra -Werror"
+
 matrix:
   include:
   # Linux, GCC8

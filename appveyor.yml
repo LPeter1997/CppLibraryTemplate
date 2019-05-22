@@ -18,6 +18,7 @@ install:
   - set PATH=%PYTHON%;%PATH%
   - set PATH=%PATH%;%PYTHON%/Scripts/
   - pip install conan
+  - conan user # Create data directory
   # Versions
   - python --version
 
