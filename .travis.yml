@@ -12,7 +12,7 @@ env:
   global:
     # Conan package
     # We need to set CONAN_PASSWORD in the Repository Settings
-    - CONAN_PACKAGE_NAME="samplib"
+    - CONAN_PACKAGE_NAME="SampleProject"
     - CONAN_USERNAME="LPeter1997"
     - CONAN_LOGIN_USERNAME="LPeter1997"
     - CONAN_CHANNEL="dev"
