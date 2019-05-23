@@ -20,7 +20,7 @@ env:
     - CONAN_UPLOAD="https://api.bintray.com/conan/lpeter1997/SampleRepo"
     - CONAN_HEADER_ONLY="True"
     - CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
-    - CONAN_UPLOAD_ONLY_WHEN_STABLE="True"
+    - CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
     - CONAN_CONANFILE="conan/conanfile.py"
     - CONAN_TEST_FOLDER="test_package"
     # Build related
