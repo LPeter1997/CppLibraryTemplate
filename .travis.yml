@@ -12,6 +12,7 @@ env:
   global:
     # Conan package
     # We need to set CONAN_PASSWORD in the Repository Settings
+    # Note that it has to be the API key, not the profile password
     - CONAN_PACKAGE_NAME="SampleProject"
     - CONAN_USERNAME="LPeter1997"
     - CONAN_LOGIN_USERNAME="lpeter1997"
