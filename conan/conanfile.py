@@ -11,8 +11,8 @@ class SamplelibConan(ConanFile):
     author = "Peter Lenkefi <lenkefi.peti@gmail.com>"
     license = "MIT"
     url = "https://github.com/LPeter1997/CppLibraryTemplate"
-    exports = ["LICENSE"]
-    exports_sources = ["single_include/*"]
+    #exports = ["LICENSE"]
+    exports_sources = ["../*"]
 
     def package(self):
         self.copy(pattern="LICENSE", dst="licenses")
