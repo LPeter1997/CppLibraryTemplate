@@ -14,7 +14,7 @@ env:
     # We need to set CONAN_PASSWORD in the Repository Settings
     - CONAN_PACKAGE_NAME="SampleProject"
     - CONAN_USERNAME="LPeter1997"
-    - CONAN_LOGIN_USERNAME="LPeter1997"
+    - CONAN_LOGIN_USERNAME="lpeter1997"
     - CONAN_CHANNEL="dev"
     - CONAN_UPLOAD="https://api.bintray.com/conan/conan-community/conan"
     - CONAN_HEADER_ONLY="True"
