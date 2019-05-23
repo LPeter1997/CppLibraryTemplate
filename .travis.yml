@@ -27,11 +27,18 @@ env:
     # Build related
     - CXXFLAGS="-Wall -Wextra -Werror"
 
+stages:
+  - test
+  - deploy
+
 matrix:
   include:
+  # Stage: Test
   # Linux, GCC8
   - os: linux
     dist: xenial
+    stage: test
+    name: "Tests - Linux, GCC8"
     compiler: gcc
     addons:
       apt:
@@ -43,6 +50,8 @@ matrix:
   # Linux, Clang8
   - os: linux
     dist: xenial
+    stage: test
+    name: "Tests - Linux, Clang8"
     compiler: clang
     addons:
       apt:
@@ -64,6 +73,8 @@ matrix:
   # Linux, GCC8, coverage
   - os: linux
     dist: xenial
+    stage: test
+    name: "Coverage - Linux, GCC8, Coveralls"
     compiler: gcc
     addons:
       apt:
@@ -81,6 +92,8 @@ matrix:
   # Linux, Conan release
   - os: linux
     dist: xenial
+    stage: deploy
+    name: "Delpoyment - Conan"
     sudo: required
     language: python
     python: "3.6"
