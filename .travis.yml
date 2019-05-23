@@ -20,6 +20,7 @@ env:
     - CONAN_HEADER_ONLY="True"
     - CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
     - CONAN_UPLOAD_ONLY_WHEN_STABLE="True"
+    - CONAN_CONANFILE="conan/conanfile.py"
     - CONAN_TEST_FOLDER="conan/test_package"
     # Build related
     - CXXFLAGS="-Wall -Wextra -Werror"

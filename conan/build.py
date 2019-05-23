@@ -13,6 +13,7 @@ if __name__ == "__main__":
     channel     = os.getenv('CONAN_CHANNEL', 'dev')
     upload      = os.getenv('CONAN_UPLOAD')
     branch_pat  = os.getenv('CONAN_STABLE_BRANCH_PATTERN', r'release/\d+\.\d+\.\d+.*')
+    conanfile   = os.getenv('CONAN_CONANFILE', os.path.join('conan', 'conanfile.py'))
     test_folder = os.getenv('CONAN_TEST_FOLDER', os.path.join('conan', 'test_package'))
     only_stable = os.getenv('CONAN_UPLOAD_ONLY_WHEN_STABLE', True)
     header_only = os.getenv('CONAN_HEADER_ONLY', False)
@@ -26,6 +27,7 @@ if __name__ == "__main__":
         upload                  = upload,
         stable_branch_pattern   = branch_pat,
         upload_only_when_stable = only_stable,
+        conanfile               = conanfile,
         test_folder             = test_folder
     )
 
