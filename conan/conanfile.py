@@ -5,7 +5,7 @@ from conans import ConanFile, tools
 
 class SamplelibConan(ConanFile):
     name = "SampleProject"
-    version = "0.0.1"
+    version = "0.0.1-dev"
     description = "A sample header-only C++ library template"
     topics = ("sample", "header-only", "template")
     author = "Peter Lenkefi <lenkefi.peti@gmail.com>"
