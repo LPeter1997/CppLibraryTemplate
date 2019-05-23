@@ -17,7 +17,7 @@ env:
     - CONAN_USERNAME="LPeter1997"
     - CONAN_LOGIN_USERNAME="lpeter1997"
     - CONAN_CHANNEL="dev"
-    - CONAN_UPLOAD="https://api.bintray.com/conan/conan-community/conan"
+    - CONAN_UPLOAD="https://api.bintray.com/conan/lpeter1997/SampleRepo "
     - CONAN_HEADER_ONLY="True"
     - CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
     - CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
