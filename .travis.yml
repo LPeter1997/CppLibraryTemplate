@@ -23,6 +23,7 @@ env:
     - CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
     - CONAN_CONANFILE="conan/conanfile.py"
     - CONAN_TEST_FOLDER="test_package"
+    - CONAN_LOGGING_LEVEL=10
     # Build related
     - CXXFLAGS="-Wall -Wextra -Werror"
 
