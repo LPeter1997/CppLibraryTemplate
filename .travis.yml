@@ -10,6 +10,18 @@ notifications:
 env:
   # For everyone in the matrix
   global:
+    # Conan package
+    # We need to set CONAN_PASSWORD in the Repository Settings
+    - CONAN_PACKAGE_NAME="samplib"
+    - CONAN_USERNAME="LPeter1997"
+    - CONAN_LOGIN_USERNAME="LPeter1997"
+    - CONAN_CHANNEL="dev"
+    - CONAN_UPLOAD="https://api.bintray.com/conan/conan-community/conan"
+    - CONAN_HEADER_ONLY="True"
+    - CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
+    - CONAN_UPLOAD_ONLY_WHEN_STABLE="True"
+    - CONAN_TEST_FOLDER="conan/test_package"
+    # Build related
     - CXXFLAGS="-Wall -Wextra -Werror"
 
 matrix:
@@ -63,6 +75,27 @@ matrix:
       - pip install --user cpp-coveralls
     after_success:
       - coveralls --gcov gcov-8 --gcov-options '\-lp' --root ${TRAVIS_BUILD_DIR} --build-root ${TRAVIS_BUILD_DIR}/build --extension cpp --extension hpp --exclude deps --exclude tests --exclude examples --include single_include
+  # Linux, GCC8, Conan release
+  - os: linux
+    dist: xenial
+    sudo: required
+    compiler: gcc
+    addons:
+      apt:
+        sources: ['ubuntu-toolchain-r-test', 'deadsnakes']
+        packages: ['g++-8', 'python3.6']
+    services:
+      - docker
+    env:
+      - COMPILER=g++-8
+      - CONAN_GCC_VERSIONS=8
+      - CONAN_DOCKER_IMAGE=conanio/gcc8
+    install:
+      - pip install --user conan
+      - pip install -U conan_package_tools conan
+    script:
+      - conan user
+      - python "conan/build.py"
 
 install:
   - python --version
