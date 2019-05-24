@@ -1,6 +1,6 @@
 
 # Source and target
-set(CONANFILE_IN ${CMAKE_CURRENT_SOURCE_DIR}/conanfile.in)
+set(CONANFILE_IN  ${CMAKE_CURRENT_SOURCE_DIR}/conanfile.in)
 set(CONANFILE_OUT ${CMAKE_CURRENT_SOURCE_DIR}/conanfile.py)
 
 # Create the tag list
@@ -21,3 +21,5 @@ configure_file(
 add_custom_target(conanfile ALL
     SOURCES ${CONANFILE_OUT}
 )
+
+# TODO: Invoke actual deployment
