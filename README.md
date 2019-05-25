@@ -1,5 +1,6 @@
 <img src="https://github.com/LPeter1997/CppLibraryTemplate/blob/master/logo.svg" width="20%">
 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 [![GitHub version](https://badge.fury.io/gh/LPeter1997%2FCppLibraryTemplate.svg)](https://badge.fury.io/gh/LPeter1997%2FCppLibraryTemplate)
 [![LoC](https://tokei.rs/b1/github/LPeter1997/CppLibraryTemplate)](https://github.com/LPeter1997/CppLibraryTemplate)
 [![Build Status](https://travis-ci.org/LPeter1997/CppLibraryTemplate.svg?branch=master)](https://travis-ci.org/LPeter1997/CppLibraryTemplate)
