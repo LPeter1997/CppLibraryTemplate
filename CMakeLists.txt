@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 # Project metadata
-project(SampleProject
+project(
+    SampleProject
     VERSION      0.0.1
     DESCRIPTION  "A sample header-only C++ library template"
     HOMEPAGE_URL "https://github.com/LPeter1997/CppLibraryTemplate"
+    LANGUAGES    CXX
 )
 set(PROJECT_LOGO   "${CMAKE_SOURCE_DIR}/logo.svg")
 set(PROJECT_AUTHOR "Peter Lenkefi")
@@ -18,11 +20,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED   ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Cache variables
-option(${PROJECT_NAME}_GENERATE_DOCS  "Generate documentation from source"               OFF)
-option(${PROJECT_NAME}_BUILD_EXAMPLES "Build the example programs"                       OFF)
-option(${PROJECT_NAME}_BUILD_TESTS    "Build tests that are usable with ctest"           OFF)
-option(${PROJECT_NAME}_COVERAGE       "Configure build for coverage"                     OFF)
-option(${PROJECT_NAME}_DEPLOY_CONAN   "Deploy to conan (makes everything else disabled)" OFF)
+include(${CMAKE_SOURCE_DIR}/cmake/PrefixedVariable.cmake)
+prefixed_option(GENERATE_DOCS  "Generate documentation from source"               OFF)
+prefixed_option(BUILD_EXAMPLES "Build the example programs"                       OFF)
+prefixed_option(BUILD_TESTS    "Build tests that are usable with ctest"           OFF)
+prefixed_option(COVERAGE       "Configure build for coverage"                     OFF)
+prefixed_option(DEPLOY_CONAN   "Deploy to conan (makes everything else disabled)" OFF)
 
 # Default to Debug
 if(NOT CMAKE_BUILD_TYPE)

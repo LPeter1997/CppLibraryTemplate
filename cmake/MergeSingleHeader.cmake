@@ -17,9 +17,14 @@
  # )
 ]]
 
+include(${CMAKE_SOURCE_DIR}/cmake/PrefixedVariable.cmake)
+
 # Create a configuration variable for the merge script
-set(${PROJECT_NAME}_MERGE_SCRIPT "${CMAKE_SOURCE_DIR}/scripts/hmerge.py"
-    CACHE FILEPATH "The path of the python merge script.")
+prefixed_variable(
+    MERGE_SCRIPT FILEPATH
+    "The path of the python merge script."
+    "${CMAKE_SOURCE_DIR}/scripts/hmerge.py"
+)
 
 # Create a target that does the merge
 function(merge_single_header target)

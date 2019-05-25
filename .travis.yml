@@ -7,8 +7,6 @@ notifications:
     on_success: never
     on_failure: always
 
-# TODO: Lot of SampleProject duplications...
-
 env:
   # For everyone in the matrix
   global:
@@ -28,7 +26,7 @@ env:
     - CONAN_LOGGING_LEVEL=10
     # Build related
     - CXXFLAGS="-Wall -Wextra -Werror"
-    - CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Debug -DSampleProject_BUILD_EXAMPLES=ON -DSampleProject_BUILD_TESTS=ON"
+    - CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON -DBUILD_TESTS=ON"
 
 stages:
   - test
@@ -85,7 +83,7 @@ matrix:
         packages: ['g++-8', 'python3.6']
     env:
       - COMPILER=g++-8
-      - CMAKE_FLAGS="${CMAKE_FLAGS} -DSampleProject_COVERAGE=ON"
+      - CMAKE_FLAGS="${CMAKE_FLAGS} -DCOVERAGE=ON"
     before_script:
       - pip install --user conan
       - pip install --user cpp-coveralls
@@ -105,7 +103,7 @@ matrix:
       - CONAN_GCC_VERSIONS=8
       - CONAN_DOCKER_IMAGE=conanio/gcc8
       # Override flags
-      - CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Release -DSampleProject_DEPLOY_CONAN=ON"
+      - CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Release -DDEPLOY_CONAN=ON"
     install:
       - pip install -U conan_package_tools conan
     script:

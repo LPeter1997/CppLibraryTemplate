@@ -25,8 +25,7 @@ install:
 
 before_build:
   - cd %BUILD_DIR%
-  # TODO: Clean this up, the SampleProject is redundant
-  - cmake -DCMAKE_BUILD_TYPE=Release -DSampleProject_BUILD_EXAMPLES=ON -DSampleProject_BUILD_TESTS=ON -DCMAKE_CXX_FLAGS="/W1" -G"Visual Studio 15 2017" ..
+  - cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=ON -DBUILD_TESTS=ON -DCMAKE_CXX_FLAGS="/W1" -G"Visual Studio 15 2017" ..
 
 build:
   parallel: true
