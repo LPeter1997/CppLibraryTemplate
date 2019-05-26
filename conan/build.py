@@ -32,9 +32,5 @@ if __name__ == "__main__":
         #test_folder             = test_folder
     )
 
-    #if header_only == "False":
-    #    builder.add_common_builds(pure_c=pure_c)
-    #else:
     builder.add({}, {}, {}, {})
-
     builder.run()
