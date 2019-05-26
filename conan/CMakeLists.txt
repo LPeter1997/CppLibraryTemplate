@@ -44,3 +44,6 @@ add_custom_target(conan_build ALL
     DEPENDS "${CONANFILE_OUT}"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 )
+
+# Make sure the order is right
+add_dependencies(conan_build conan_user)
