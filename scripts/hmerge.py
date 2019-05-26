@@ -67,7 +67,6 @@ STRING_LIT = fr'\"(?P<literal>{STRING_LIT_INSIDE})\"'
 USER_INCLUDE = re.compile(fr'{INCLUDE_PREFIX}{STRING_LIT}')
 # System include
 SYSTEM_INCLUDE = re.compile(fr'{INCLUDE_PREFIX}<(?P<literal>{STRING_LIT_INSIDE})>')
-# TODO: ifndef, define, endif GUARD FORMAT (don't care about others)
 
 ################################################################################
 

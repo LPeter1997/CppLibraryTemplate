@@ -17,9 +17,14 @@
  # )
 ]]
 
+include(${CMAKE_SOURCE_DIR}/cmake/PrefixedVariable.cmake)
+
 # Create a configuration variable for the merge script
-set(SINGLE_HEADER_MERGE_SCRIPT "${CMAKE_SOURCE_DIR}/scripts/hmerge.py"
-    CACHE FILEPATH "The path of the python merge script.")
+prefixed_variable(
+    MERGE_SCRIPT FILEPATH
+    "The path of the python merge script."
+    "${CMAKE_SOURCE_DIR}/scripts/hmerge.py"
+)
 
 # Create a target that does the merge
 function(merge_single_header target)
@@ -80,7 +85,7 @@ function(merge_single_header target)
 
     # Invoke the actual script
     add_custom_command(
-        COMMAND "${PYTHON_EXECUTABLE}" ${SINGLE_HEADER_MERGE_SCRIPT}
+        COMMAND "${PYTHON_EXECUTABLE}" ${${PROJECT_NAME}_MERGE_SCRIPT}
             --libname ${MSH_LIBNAME}
             --root ${MSH_ROOT}
             --target ${OUTPUT_FILE}

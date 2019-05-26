@@ -11,8 +11,7 @@ class SamplelibConan(ConanFile):
     author = "@PROJECT_AUTHOR@ <@PROJECT_EMAIL@>"
     license = "MIT"
     url = "@PROJECT_HOMEPAGE_URL@"
-    exports = ["LICENSE"]
-    exports_sources = ["single_include/*"]
+    exports_sources = ["../*"]
 
     def package(self):
         self.copy(pattern="LICENSE", dst="licenses")

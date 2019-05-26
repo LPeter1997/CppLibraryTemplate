@@ -12,24 +12,34 @@ env:
   global:
     # Conan package
     # We need to set CONAN_PASSWORD in the Repository Settings
-    - CONAN_PACKAGE_NAME="SampleProject"
-    - CONAN_USERNAME="LPeter1997"
-    - CONAN_LOGIN_USERNAME="LPeter1997"
-    - CONAN_CHANNEL="dev"
-    - CONAN_UPLOAD="https://api.bintray.com/conan/conan-community/conan"
-    - CONAN_HEADER_ONLY="True"
-    - CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
-    - CONAN_UPLOAD_ONLY_WHEN_STABLE="True"
-    - CONAN_CONANFILE="conan/conanfile.py"
-    - CONAN_TEST_FOLDER="conan/test_package"
+    # Note that it has to be the API key, not the profile password
+    #- CONAN_PACKAGE_NAME="SampleProject"
+    #- CONAN_USERNAME="LPeter1997"
+    #- CONAN_LOGIN_USERNAME="lpeter1997"
+    #- CONAN_CHANNEL="dev"
+    #- CONAN_UPLOAD="https://api.bintray.com/conan/lpeter1997/SampleRepo"
+    #- CONAN_HEADER_ONLY="True"
+    #- CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
+    #- CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
+    #- CONAN_CONANFILE="conan/conanfile.py"
+    #- CONAN_TEST_FOLDER="test_package"
+    - CONAN_LOGGING_LEVEL=10
     # Build related
     - CXXFLAGS="-Wall -Wextra -Werror"
+    - CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON -DBUILD_TESTS=ON"
+
+stages:
+  - test
+  - deploy
 
 matrix:
   include:
+  # Stage: Test
   # Linux, GCC8
   - os: linux
     dist: xenial
+    stage: test
+    name: "Tests - Linux, GCC8"
     compiler: gcc
     addons:
       apt:
@@ -41,6 +51,8 @@ matrix:
   # Linux, Clang8
   - os: linux
     dist: xenial
+    stage: test
+    name: "Tests - Linux, Clang8"
     compiler: clang
     addons:
       apt:
@@ -62,6 +74,8 @@ matrix:
   # Linux, GCC8, coverage
   - os: linux
     dist: xenial
+    stage: test
+    name: "Coverage - Linux, GCC8, Coveralls"
     compiler: gcc
     addons:
       apt:
@@ -69,8 +83,7 @@ matrix:
         packages: ['g++-8', 'python3.6']
     env:
       - COMPILER=g++-8
-      # CMake automatically imports this as C++ flags
-      - CXXFLAGS="-O0 --coverage -fno-inline -fno-inline-small-functions -fno-default-inline"
+      - CMAKE_FLAGS="${CMAKE_FLAGS} -DCOVERAGE=ON"
     before_script:
       - pip install --user conan
       - pip install --user cpp-coveralls
@@ -79,6 +92,8 @@ matrix:
   # Linux, Conan release
   - os: linux
     dist: xenial
+    stage: deploy
+    name: "Delpoyment - Conan"
     sudo: required
     language: python
     python: "3.6"
@@ -87,11 +102,15 @@ matrix:
     env:
       - CONAN_GCC_VERSIONS=8
       - CONAN_DOCKER_IMAGE=conanio/gcc8
+      # Override flags
+      - CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Release -DDEPLOY_CONAN=ON"
     install:
       - pip install -U conan_package_tools conan
     script:
-      - conan user
-      - python "conan/build.py"
+      - cmake ${CMAKE_FLAGS} .
+      - make -j 4
+      #- conan user
+      #- python "conan/build.py"
 
 install:
   - python --version
@@ -105,7 +124,7 @@ script:
   - mkdir -p build && cd build
   # Generate and build
   # TODO: Why CMAKE_BUILD_TYPE=Release kill the debug flags?
-  - cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="${CXXFLAGS}" ..
+  - cmake ${CMAKE_FLAGS} -DCMAKE_CXX_FLAGS="${CXXFLAGS}" ..
   - make -j 4
   # Run tests
   - CTEST_OUTPUT_ON_FAILURE=1

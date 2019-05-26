@@ -1,3 +1,2 @@
 # Generated
-# For now we allow it to test deployment
-#/conanfile.py
+/conanfile.py
