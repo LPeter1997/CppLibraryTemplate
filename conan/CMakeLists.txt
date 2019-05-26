@@ -19,7 +19,7 @@ configure_file(
 )
 
 add_custom_target(conanfile ALL
-    SOURCES ${CONANFILE_OUT}
+    SOURCES "${CONANFILE_OUT}"
 )
 
 set(CONAN_ENV_VARS
@@ -29,7 +29,7 @@ set(CONAN_ENV_VARS
     CONAN_UPLOAD="${CONAN_UPLOAD}"
     CONAN_HEADER_ONLY="${CONAN_HEADER_ONLY}"
     CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
-    CONAN_CONANFILE="conan/conanfile.py"
+    CONAN_CONANFILE="conanfile.py"
     CONAN_TEST_FOLDER="test_package"
 )
 
