@@ -108,6 +108,7 @@ matrix:
       - pip install -U conan_package_tools conan
     script:
       - cmake ${CMAKE_FLAGS} .
+      - make -j 4
       #- conan user
       #- python "conan/build.py"
 
