@@ -78,6 +78,35 @@ matrix:
       - pip install --user cpp-coveralls
     after_success:
       - coveralls --gcov gcov-8 --gcov-options '\-lp' --root ${TRAVIS_BUILD_DIR} --build-root ${TRAVIS_BUILD_DIR}/build --extension cpp --extension hpp --exclude deps --exclude tests --exclude examples --include single_include
+  # Linux, Clang8, clang-tidy
+  - os: linux
+    dist: xenial
+    stage: test
+    name: "Analysis - Linux, Clang8, Clang-Tidy"
+    compiler: clang
+    addons:
+      apt:
+        sources: ['ubuntu-toolchain-r-test', 'llvm-toolchain-xenial-8', 'deadsnakes']
+        packages: ['g++-8', 'clang-8', 'python3.6']
+    env:
+      - COMPILER=clang++-8
+      - CXXFLAGS="${CXXFLAGS} -stdlib=libstdc++"
+      - CMAKE_FLAGS="${CMAKE_FLAGS} -DTIDY_CHECK=ON"
+    before_script:
+      - pip install --user conan
+    after_success:
+      # Run tidy
+      - make tidy > clang_tidy_output.txt
+      # Search for warnings and errors
+      - |
+        if [[ -n $(grep "warning: " clang_tidy_output.txt) ]] || [[ -n $(grep "error: " clang_tidy_output.txt) ]]; then
+          echo "You must pass the clang tidy checks before submitting a pull request"
+          echo ""
+          grep --color -E '^|warning: |error: ' clang_tidy_output.txt
+          exit -1;
+        else
+          echo -e "\033[1;32m\xE2\x9C\x93 passed:\033[0m $1";
+        fi
   # Linux, Conan release
   - os: linux
     dist: xenial
@@ -98,8 +127,6 @@ matrix:
     script:
       - cmake ${CMAKE_FLAGS} .
       - make -j 4
-      #- conan user
-      #- python "conan/build.py"
 
 install:
   - python --version
