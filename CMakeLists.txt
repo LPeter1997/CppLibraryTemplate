@@ -13,6 +13,11 @@ set(PROJECT_AUTHOR "Peter Lenkefi")
 set(PROJECT_EMAIL  "lenkefi.peti@gmail.com")
 set(PROJECT_TAGS   "conan" "sample" "header-only" "template")
 
+# Conan metadata
+set(CONAN_USERNAME    "LPeter1997")
+set(CONAN_UPLOAD      "https://api.bintray.com/conan/lpeter1997/SampleRepo")
+set(CONAN_HEADER_ONLY True)
+
 # C++ configuration
 set(CMAKE_CXX_STANDARD            17)
 set(CMAKE_CXX_STANDARD_REQUIRED   ON)

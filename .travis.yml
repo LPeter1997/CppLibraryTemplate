@@ -13,17 +13,17 @@ env:
     # Conan package
     # We need to set CONAN_PASSWORD in the Repository Settings
     # Note that it has to be the API key, not the profile password
-    - CONAN_PACKAGE_NAME="SampleProject"
-    - CONAN_USERNAME="LPeter1997"
-    - CONAN_LOGIN_USERNAME="lpeter1997"
+    #- CONAN_PACKAGE_NAME="SampleProject"
+    #- CONAN_USERNAME="LPeter1997"
+    #- CONAN_LOGIN_USERNAME="lpeter1997"
     #- CONAN_CHANNEL="dev"
-    - CONAN_UPLOAD="https://api.bintray.com/conan/lpeter1997/SampleRepo"
-    - CONAN_HEADER_ONLY="True"
-    - CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
-    - CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
-    - CONAN_CONANFILE="conan/conanfile.py"
-    - CONAN_TEST_FOLDER="test_package"
-    - CONAN_LOGGING_LEVEL=10
+    #- CONAN_UPLOAD="https://api.bintray.com/conan/lpeter1997/SampleRepo"
+    #- CONAN_HEADER_ONLY="True"
+    #- CONAN_STABLE_BRANCH_PATTERN="release/\d+\.\d+\.\d+.*"
+    #- CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
+    #- CONAN_CONANFILE="conan/conanfile.py"
+    #- CONAN_TEST_FOLDER="test_package"
+    #- CONAN_LOGGING_LEVEL=10
     # Build related
     - CXXFLAGS="-Wall -Wextra -Werror"
     - CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON -DBUILD_TESTS=ON"
@@ -108,8 +108,8 @@ matrix:
       - pip install -U conan_package_tools conan
     script:
       - cmake ${CMAKE_FLAGS} .
-      - conan user
-      - python "conan/build.py"
+      #- conan user
+      #- python "conan/build.py"
 
 install:
   - python --version

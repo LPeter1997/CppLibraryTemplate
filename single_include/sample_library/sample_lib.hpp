@@ -4,7 +4,7 @@
  * Version: 0.0.1
  *
  * This file has been merged from multiple source files.
- * Generation date: 2019-05-24T17:50:18
+ * Generation date: 2019-05-25T18:26:51
  * Project home page: https://github.com/LPeter1997/CppLibraryTemplate
  *
  * Copyright (c) 2019 Peter Lenkefi

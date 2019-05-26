@@ -22,4 +22,22 @@ add_custom_target(conanfile ALL
     SOURCES ${CONANFILE_OUT}
 )
 
-# TODO: Invoke actual deployment
+set(CONAN_ENV_VARS
+    CONAN_PACKAGE_NAME="${PROJECT_NAME}"
+    CONAN_USERNAME="${CONAN_USERNAME}"
+    CONAN_LOGIN_USERNAME="${CONAN_USERNAME}"
+    CONAN_UPLOAD="${CONAN_UPLOAD}"
+    CONAN_HEADER_ONLY="${CONAN_HEADER_ONLY}"
+    CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
+    CONAN_CONANFILE="conan/conanfile.py"
+    CONAN_TEST_FOLDER="test_package"
+)
+
+add_custom_target(conan_user ALL
+    COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} conan user
+    DEPENDS "${CONANFILE_OUT}"
+)
+
+add_custom_target(conan_build ALL
+    COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} python "conan/build.py"
+)
