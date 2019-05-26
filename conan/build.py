@@ -29,13 +29,13 @@ if __name__ == "__main__":
     elif re.match(re_devel, branch):
         channel = 'nightly'
         projver = branch.replace('dev/', '')
+
+    if channel and projver:
+        reference = f'{projname}/{projver}@{username}/{channel}'
+
+        builder = ConanMultiPackager(reference=reference)
+
+        builder.add({}, {}, {}, {})
+        builder.run()
     else:
         print('Not release or development branch, ignoring release!')
-        return
-
-    reference = f'{projname}/{projver}@{username}/{channel}'
-
-    builder = ConanMultiPackager(reference=reference)
-
-    builder.add({}, {}, {}, {})
-    builder.run()
