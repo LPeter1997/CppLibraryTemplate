@@ -5,5 +5,5 @@ find_program(CLANG_TIDY clang-tidy-8)
 add_custom_target(clang_tidy
     COMMAND ${CLANG_TIDY}
         -config="clang_tidy_config"
-        -quiet
+        #-quiet
 )
