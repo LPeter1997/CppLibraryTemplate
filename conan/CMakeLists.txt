@@ -39,5 +39,5 @@ add_custom_target(conan_user ALL
 )
 
 add_custom_target(conan_build ALL
-    COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} python "conan/build.py"
+    COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} python "build.py"
 )
