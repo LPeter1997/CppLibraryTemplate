@@ -11,11 +11,11 @@ class SamplelibConan(ConanFile):
     author = "@PROJECT_AUTHOR@ <@PROJECT_EMAIL@>"
     license = "MIT"
     url = "@PROJECT_HOMEPAGE_URL@"
-    exports_sources = ["*"]
+    exports_sources = ["../*"]
 
     def package(self):
         self.copy(pattern="LICENSE", dst="licenses")
-        self.copy(pattern="*.hpp", dst="include", src="single_include", keep_path=True)
+        self.copy(pattern="*.hpp", dst="include", src="../single_include", keep_path=True)
 
     def package_id(self):
         self.info.header_only()
