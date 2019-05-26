@@ -1,36 +1,41 @@
 import os
+import re
 
 from cpt.packager import ConanMultiPackager
 
 
 if __name__ == "__main__":
-    #login_uname = os.getenv('CONAN_LOGIN_USERNAME')
-    uname       = os.getenv('CONAN_USERNAME')
-    channel     = os.getenv('CONAN_CHANNEL', 'dev')
-    package_ver = os.getenv('CONAN_PACKAGE_VERSION', os.getenv('TRAVIS_BRANCH')) or "0.0.1-dev"
-    package_ver = package_ver.replace('release/', '')
-    package_nam = os.getenv('CONAN_PACKAGE_NAME') or "SampleProject"
-    reference   = f'{package_nam}/{package_ver}@{uname}/{channel}'
-    #channel     = os.getenv('CONAN_CHANNEL', 'dev')
-    #upload      = os.getenv('CONAN_UPLOAD')
-    #branch_pat  = os.getenv('CONAN_STABLE_BRANCH_PATTERN', r'release/\d+\.\d+\.\d+.*')
-    #conanfile   = os.getenv('CONAN_CONANFILE', os.path.join('conan', 'conanfile.py'))
-    #test_folder = os.getenv('CONAN_TEST_FOLDER', os.path.join('conan', 'test_package'))
-    #only_stable = os.getenv('CONAN_UPLOAD_ONLY_WHEN_STABLE', True)
-    #header_only = os.getenv('CONAN_HEADER_ONLY', False)
-    #pure_c      = os.getenv('CONAN_PURE_C', False)
+    # Release (stable) branch pattern
+    re_stable = r'^rel/\d+\.\d+\.\d+$'
+    # Development (nightly release) branch pattern
+    re_devel  = r'^dev/\d+\.\d+\.\d+$'
 
-    builder = ConanMultiPackager(
-        #username                = uname,
-        #login_username          = login_uname,
-        #reference               = reference#,
-        #channel                 = channel,
-        #upload                  = upload,
-        #stable_branch_pattern   = branch_pat,
-        #upload_only_when_stable = only_stable,
-        #conanfile               = conanfile,
-        #test_folder             = test_folder
-    )
+    projname = os.getenv('CONAN_PACKAGE_NAME')
+    if not projname:
+        raise Exception('CONAN_PACKAGE_NAME environment variable not defined')
+    username = os.getenv('CONAN_USERNAME')
+    if not username:
+        raise Exception('CONAN_USERNAME environment variable not defined')
+    branch = os.getenv('TRAVIS_BRANCH')
+    if not branch:
+        raise Exception('TRAVIS_BRANCH environment variable not defined (are you not releasing on Travis?)')
+
+    channel = None
+    projver = None
+
+    if re.match(re_stable, branch):
+        channel = 'stable'
+        projver = branch.replace('rel/', '')
+    elif re.match(re_devel, branch):
+        channel = 'nightly'
+        projver = branch.replace('dev/', '')
+    else:
+        print('Not release or development branch, ignoring release!')
+        return
+
+    reference = f'{projname}/{projver}@{username}/{channel}'
+
+    builder = ConanMultiPackager(reference=reference)
 
     builder.add({}, {}, {}, {})
     builder.run()
