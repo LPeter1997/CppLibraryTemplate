@@ -29,15 +29,18 @@ set(CONAN_ENV_VARS
     CONAN_UPLOAD="${CONAN_UPLOAD}"
     CONAN_HEADER_ONLY="${CONAN_HEADER_ONLY}"
     CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
-    CONAN_CONANFILE="conanfile.py"
+    CONAN_CONANFILE="conan/conanfile.py"
     CONAN_TEST_FOLDER="test_package"
 )
 
 add_custom_target(conan_user ALL
     COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} conan user
     DEPENDS "${CONANFILE_OUT}"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 )
 
 add_custom_target(conan_build ALL
-    COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} python "build.py"
+    COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} python "conan/build.py"
+    DEPENDS "${CONANFILE_OUT}"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 )
