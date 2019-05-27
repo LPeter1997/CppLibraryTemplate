@@ -10,7 +10,7 @@ file(READ "${CMAKE_CURRENT_SOURCE_DIR}/.clang-tidy" TIDY_CONFIG)
 # Remove newlines
 string(REPLACE "\n" " " TIDY_CONFIG "${TIDY_CONFIG}")
 string(REPLACE "\r" " " TIDY_CONFIG "${TIDY_CONFIG}")
-string(REGEX REPLACE "( )*$" "" TIDY_CONFIG "${TIDY_CONFIG}")
+string(STRIP "${TIDY_CONFIG}" TIDY_CONFIG)
 
 # Invoke
 add_custom_target(clang_tidy
