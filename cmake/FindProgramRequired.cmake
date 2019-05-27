@@ -12,7 +12,6 @@
 
 macro(find_program_required varname)
     find_program(${ARGV})
-    message("ARGV is ${ARGV} and varname is ${${varname}}")
     if(NOT ${varname})
         message(FATAL_ERROR "Could not find program ${varname}!")
     endif()

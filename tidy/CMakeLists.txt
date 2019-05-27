@@ -7,7 +7,7 @@ find_program_required(RUN_CLANG_TIDY run-clang-tidy-8.py)
 
 # Invoke
 add_custom_target(clang_tidy
-    COMMAND ${CLANG_TIDY}
+    COMMAND ${RUN_CLANG_TIDY}
         -clang-tidy-binary ${CLANG_TIDY}
         -header-filter=.*
         #-quiet
