@@ -11,6 +11,7 @@ add_custom_target(clang_tidy
         -clang-tidy-binary ${CLANG_TIDY}
         -header-filter=.*
         -checks=*
+        -dump-config
         #-quiet
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
