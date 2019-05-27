@@ -19,4 +19,5 @@ add_custom_target(clang_tidy
         -config="${TIDY_CONFIG}"
         #-quiet
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    VERBATIM
 )
