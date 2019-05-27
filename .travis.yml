@@ -96,16 +96,7 @@ matrix:
       - pip install --user conan
     after_success:
       # Run tidy
-      - make clang_tidy > clang_tidy_output.txt
-      - |
-        if [[ -n $(grep "warning: " clang_tidy_output.txt) ]] || [[ -n $(grep "error: " clang_tidy_output.txt) ]]; then
-          echo "You must pass the clang tidy checks before submitting a pull request"
-          echo ""
-          grep --color -E '^|warning: |error: ' clang_tidy_output.txt
-          exit -1;
-        else
-          echo -e "\033[1;32m\xE2\x9C\x93 passed:\033[0m $1";
-        fi
+      - make clang_tidy
   # Linux, Conan release
   - os: linux
     dist: xenial
