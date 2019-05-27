@@ -17,8 +17,6 @@ add_custom_target(clang_tidy
     COMMAND ${RUN_CLANG_TIDY}
         -clang-tidy-binary ${CLANG_TIDY}
         -header-filter=.*
-        -config="${TIDY_CONFIG}"
         #-quiet
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    VERBATIM
 )
