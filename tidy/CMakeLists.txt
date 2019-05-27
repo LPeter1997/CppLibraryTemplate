@@ -10,7 +10,7 @@ add_custom_target(clang_tidy
     COMMAND ${RUN_CLANG_TIDY}
         -clang-tidy-binary ${CLANG_TIDY}
         -header-filter=.*
-        -config=.clang_tidy
+        -config="${CMAKE_CURRENT_SOURCE_DIR}/.clang_tidy"
         --
         -dump-config
         #-quiet
