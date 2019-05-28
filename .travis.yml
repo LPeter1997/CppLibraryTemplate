@@ -98,7 +98,7 @@ matrix:
       # Run tidy
       - make clang_tidy > clang_tidy_output.txt
       - chmod +x ./../scripts/clang-tidy-check.sh
-      - ./../scripts/clang-tidy-check.sh clang_tidy_output.txt
+      - ./../scripts/clang-tidy-check.sh clang_tidy_output.txt || exit 1
   # Linux, Conan release
   - os: linux
     dist: xenial
