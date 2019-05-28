@@ -2,13 +2,13 @@
 
 echoerr() { echo "$@" 1>&2; }
 
-warn_cnt=$(grep -c "warning: " $1)
-err_cnt=$(grep -c "error: " $1)
-
-echoerr "Warnings: ${warn_cnt}"
-echoerr "Errors: ${err_cnt}"
-
-if [ "$warn_cnt" -gt 0 ] || [ "$err_cnt" -gt 0 ]; then
-    echoerr "Warnings or errors in the output!"
+if [[ -n $(grep "warning: " $1) ]] || [[ -n $(grep "error: " $1) ]]; then
+    echoerr "You must pass the clang tidy checks before submitting a pull request!"
+    echoerr ""
+    out=$(grep --color -E '^|warning: |error: ' $1)
+    echoerr $out
     exit -1;
+else
+    echoerr -e "\033[1;32m\xE2\x9C\x93 passed:\033[0m $1";
 fi;
+
