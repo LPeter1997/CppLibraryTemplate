@@ -43,6 +43,7 @@ function(pretty_tidy)
         COMMAND "${PYTHON_EXECUTABLE}" ${${PROJECT_NAME}_PRETTY_TIDY_SCRIPT}
             --yaml ${PTD_YAML}
         #DEPENDS "${PTD_YAML}" # We need the file specified as an output...
+        OUTPUT "nonesuch__" # Just so we always run
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     )
 endfunction(pretty_tidy)
