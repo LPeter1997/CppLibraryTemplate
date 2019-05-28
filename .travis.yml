@@ -94,10 +94,10 @@ matrix:
       - CMAKE_FLAGS="${CMAKE_FLAGS} -DTIDY_CHECK=ON"
     before_script:
       - pip install --user conan
-      - pip install --user termcolor
     after_success:
       # Run tidy
-      - make clang_tidy
+      - make clang_tidy > clang_tidy_output.txt
+      - ./${TRAVIS_BUILD_DIR}/clang-tidy-check.sh clang_tidy_output.txt
   # Linux, Conan release
   - os: linux
     dist: xenial

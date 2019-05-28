@@ -12,9 +12,5 @@ add_custom_target(clang_tidy
         -clang-tidy-binary ${CLANG_TIDY}
         -header-filter=.*
         -quiet
-        -export-fixes="${CMAKE_BINARY_DIR}/clang_tidy_diag.yml"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
-
-# Pretty-print
-pretty_tidy(YAML "${CMAKE_BINARY_DIR}/clang_tidy_diag.yml")
