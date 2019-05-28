@@ -5,8 +5,7 @@ echoerr() { echo "$@" 1>&2; }
 if [[ -n $(grep "warning: " $1) ]] || [[ -n $(grep "error: " $1) ]]; then
     echoerr "You must pass the clang tidy checks before submitting a pull request!"
     echoerr ""
-    out=$(grep --color -E '^|warning: |error: ' $1)
-    echoerr $out
+    (grep --color -E '^|warning: |error: ' $1) 1>&2
     # Because travis...
     sleep 1
     exit -1;
