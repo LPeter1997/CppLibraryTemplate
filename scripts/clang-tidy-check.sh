@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 echoerr() { echo "$@" 1>&2; }
 
 if [[ -n $(grep "warning: " $1) ]] || [[ -n $(grep "error: " $1) ]]; then
