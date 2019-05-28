@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 warn_cnt=$(grep -c "warning: " $1)
 err_cnt=$(grep -c "error: " $1)
 
