@@ -1,5 +1,4 @@
 include(${CMAKE_SOURCE_DIR}/cmake/FindProgramRequired.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/PrettyTidy.cmake)
 
 # Find the clang-tidy binary
 find_program_required(CLANG_TIDY clang-tidy-8)
