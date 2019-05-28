@@ -93,6 +93,7 @@ function(merge_single_header target)
             ${EXCLUDE_LIST}
         OUTPUT "${OUTPUT_FILE}"
                "${OUTPUT_FILE}__" # Just so we always run
+        DEPENDS "${MSH_ROOT}"
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     )
     add_library(${target} INTERFACE)
