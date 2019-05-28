@@ -39,10 +39,10 @@ function(pretty_tidy)
     endif()
 
     # Invoke the actual script
-    add_custom_command(tidy_invoke
+    add_custom_command(
         COMMAND "${PYTHON_EXECUTABLE}" ${${PROJECT_NAME}_PRETTY_TIDY_SCRIPT}
             --yaml ${PTD_YAML}
-        DEPENDS "${PTD_YAML}"
+        #DEPENDS "${PTD_YAML}" # We need the file specified as an output...
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     )
 endfunction(pretty_tidy)
