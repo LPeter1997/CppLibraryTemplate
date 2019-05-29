@@ -5,7 +5,7 @@ import re
 from cpt.packager import ConanMultiPackager
 
 # Our own common utilities
-importlib.import_module('../scripts/common.py')
+importlib.import_module('../scripts/common.py', __name__)
 
 if __name__ == "__main__":
     projname = os.getenv('CONAN_PACKAGE_NAME')
