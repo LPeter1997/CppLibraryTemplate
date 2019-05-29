@@ -39,12 +39,14 @@ add_custom_target(conan_user ALL
     COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} conan user
     DEPENDS "${CONANFILE_OUT}"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    VERBATIM
 )
 
 add_custom_target(conan_build ALL
     COMMAND ${CMAKE_COMMAND} -E env ${CONAN_ENV_VARS} python "conan/build.py"
     DEPENDS "${CONANFILE_OUT}"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    VERBATIM
 )
 
 # Make sure the order is right
