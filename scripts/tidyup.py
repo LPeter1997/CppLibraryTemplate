@@ -12,14 +12,7 @@
 """
 
 import argparse
-import datetime
-import enum
-import glob
 import importlib
-import json
-import os
-import re
-import sys
 
 # Our own common utilities
 importlib.import_module('common.py')
