@@ -1,11 +1,13 @@
+import importlib
 import os
 import re
 import sys
 
-sys.path.append('../scripts/common')
-
 from cpt.packager import ConanMultiPackager
-from common import *
+
+spec = importlib.util.spec_from_file_location('comm', '../scripts/common.py')
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
 
 if __name__ == "__main__":
     projname = os.getenv('CONAN_PACKAGE_NAME')
@@ -18,10 +20,10 @@ if __name__ == "__main__":
     if not branch:
         raise Exception('TRAVIS_BRANCH environment variable not defined (are you not releasing on Travis?)')
 
-    matched, projver = is_dev_branch()
+    matched, projver = comm.is_dev_branch()
     channel = 'nightly'
     if not matched:
-        matched, projver = is_rel_branch()
+        matched, projver = comm.is_rel_branch()
         channel = 'stable'
 
     if matched:
