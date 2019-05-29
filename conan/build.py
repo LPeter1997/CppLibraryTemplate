@@ -1,11 +1,11 @@
-import importlib
 import os
 import re
+import sys
+
+sys.path.append('../scripts/')
 
 from cpt.packager import ConanMultiPackager
-
-# Our own common utilities
-importlib.import_module('../scripts/common.py', __name__)
+from common import *
 
 if __name__ == "__main__":
     projname = os.getenv('CONAN_PACKAGE_NAME')

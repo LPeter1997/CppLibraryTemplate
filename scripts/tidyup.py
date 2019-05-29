@@ -12,10 +12,8 @@
 """
 
 import argparse
-import importlib
 
-# Our own common utilities
-importlib.import_module('common.py')
+from common import *
 
 # Script version
 VER_MAJOR = 0
