@@ -8,9 +8,14 @@ find_program_required(RUN_CLANG_TIDY run-clang-tidy-8.py)
 # Check to see if clang-tidy-diff.py is there
 find_program_required(CLANG_TIDY_DIFF clang-tidy-diff-8.py)
 
+set(TIDY_ENV_VARS
+    BRANCH_RELEASE="${BRANCH_RELEASE}"
+    BRANCH_DEVELOPMENT="${BRANCH_DEVELOPMENT}"
+)
+
 # Invoke
 add_custom_target(clang_tidy
-    COMMAND ${RUN_CLANG_TIDY}
+    COMMAND ${CMAKE_COMMAND} -E env ${TIDY_ENV_VARS} ${RUN_CLANG_TIDY}
         -clang-tidy-binary ${CLANG_TIDY}
         -header-filter=.*
         -quiet

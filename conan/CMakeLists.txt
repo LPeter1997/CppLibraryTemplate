@@ -31,6 +31,8 @@ set(CONAN_ENV_VARS
     CONAN_UPLOAD_ONLY_WHEN_STABLE="False"
     CONAN_CONANFILE="conan/conanfile.py"
     CONAN_TEST_FOLDER="test_package"
+    BRANCH_RELEASE="${BRANCH_RELEASE}"
+    BRANCH_DEVELOPMENT="${BRANCH_DEVELOPMENT}"
 )
 
 add_custom_target(conan_user ALL
