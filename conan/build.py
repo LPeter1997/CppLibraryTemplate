@@ -2,7 +2,7 @@ import os
 import re
 import sys
 
-sys.path.append('../scripts/')
+sys.path.append('../scripts/common')
 
 from cpt.packager import ConanMultiPackager
 from common import *
