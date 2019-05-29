@@ -5,7 +5,7 @@ import sys
 
 from cpt.packager import ConanMultiPackager
 
-spec = importlib.util.spec_from_file_location('comm', '../scripts/common.py')
+spec = importlib.util.spec_from_file_location('comm', 'scripts/common.py')
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 
