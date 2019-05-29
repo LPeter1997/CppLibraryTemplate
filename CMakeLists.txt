@@ -17,6 +17,10 @@ set(PROJECT_TAGS   "conan" "sample" "header-only" "template")
 set(CONAN_USERNAME "LPeter1997")
 set(CONAN_UPLOAD   "https://api.bintray.com/conan/lpeter1997/SampleRepo")
 
+# Branching rules
+set(BRANCH_RELEASE     "^rel/(?P<version>\d+\.\d+\.\d+)$")
+set(BRANCH_DEVELOPMENT "^dev/(?P<version>\d+\.\d+\.\d+)$")
+
 # C++ configuration
 set(CMAKE_CXX_STANDARD            17)
 set(CMAKE_CXX_STANDARD_REQUIRED   ON)

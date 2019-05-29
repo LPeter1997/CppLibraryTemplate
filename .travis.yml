@@ -96,9 +96,7 @@ matrix:
       - pip install --user conan
     after_script:
       # Run tidy
-      - make clang_tidy > clang_tidy_output.txt
-      - chmod +x ./../scripts/clang-tidy-check.sh
-      - ./../scripts/clang-tidy-check.sh clang_tidy_output.txt || exit 1
+      - make clang_tidy
   # Linux, Conan release
   - os: linux
     dist: xenial

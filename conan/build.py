@@ -3,13 +3,10 @@ import re
 
 from cpt.packager import ConanMultiPackager
 
+# Our own common utilities
+importlib.import_module('../scripts/common.py')
 
 if __name__ == "__main__":
-    # Release (stable) branch pattern
-    re_stable = r'^rel/\d+\.\d+\.\d+$'
-    # Development (nightly release) branch pattern
-    re_devel  = r'^dev/\d+\.\d+\.\d+$'
-
     projname = os.getenv('CONAN_PACKAGE_NAME')
     if not projname:
         raise Exception('CONAN_PACKAGE_NAME environment variable not defined')
@@ -20,17 +17,13 @@ if __name__ == "__main__":
     if not branch:
         raise Exception('TRAVIS_BRANCH environment variable not defined (are you not releasing on Travis?)')
 
-    channel = None
-    projver = None
-
-    if re.match(re_stable, branch):
+    matched, projver = is_dev_branch()
+    channel = 'nightly'
+    if not matched:
+        matched, projver = is_rel_branch()
         channel = 'stable'
-        projver = branch.replace('rel/', '')
-    elif re.match(re_devel, branch):
-        channel = 'nightly'
-        projver = branch.replace('dev/', '')
 
-    if channel and projver:
+    if matched:
         reference = f'{projname}/{projver}@{username}/{channel}'
 
         builder = ConanMultiPackager(reference=reference)
