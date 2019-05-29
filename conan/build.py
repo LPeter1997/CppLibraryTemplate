@@ -20,10 +20,10 @@ if __name__ == "__main__":
     if not branch:
         raise Exception('TRAVIS_BRANCH environment variable not defined (are you not releasing on Travis?)')
 
-    matched, projver = comm.is_dev_branch()
+    matched, projver = mod.is_dev_branch()
     channel = 'nightly'
     if not matched:
-        matched, projver = comm.is_rel_branch()
+        matched, projver = mod.is_rel_branch()
         channel = 'stable'
 
     if matched:
