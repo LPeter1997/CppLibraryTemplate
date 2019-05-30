@@ -48,6 +48,7 @@ function(invoke_tidy target)
                 --run-diff "${CLANG_TIDY_DIFF}"
         OUTPUT ".nonesuch__" # Just so we always run
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        VERBATIM
     )
     add_custom_target(${target} ALL DEPENDS ".nonesuch__")
 endfunction(invoke_tidy)
