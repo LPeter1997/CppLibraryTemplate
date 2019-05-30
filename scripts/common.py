@@ -19,7 +19,6 @@ def current_branch():
 def is_branch(rx_name):
     cb = current_branch()
     rx = os.getenv(rx_name)
-    print(f'Env branch pat ({rx_name}): {rx}')
     m = re.match(rx, cb)
     if m == None:
         return (False, '')
@@ -31,3 +30,6 @@ def is_dev_branch():
 
 def is_rel_branch():
     return is_branch('BRANCH_RELEASE')
+
+def is_master_branch():
+    return is_branch('BRANCH_MASTER')

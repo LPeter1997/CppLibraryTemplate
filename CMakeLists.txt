@@ -18,6 +18,7 @@ set(CONAN_USERNAME "LPeter1997")
 set(CONAN_UPLOAD   "https://api.bintray.com/conan/lpeter1997/SampleRepo")
 
 # Branching rules
+set(BRANCH_MASTER      "^master$")
 set(BRANCH_RELEASE     "^rel/(?P<version>\\d+\\.\\d+\\.\\d+)$")
 set(BRANCH_DEVELOPMENT "^dev/(?P<version>\\d+\\.\\d+\\.\\d+)$")
 
