@@ -46,9 +46,13 @@ function(invoke_tidy target)
                 --tidy-bin "${CLANG_TIDY}"
                 --run-tidy "${RUN_CLANG_TIDY}"
                 --run-diff "${CLANG_TIDY_DIFF}"
-        OUTPUT ".nonesuch__" # Just so we always run
+        OUTPUT_FILE ".nonesuch__" # Just so we always run
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        VERBATIM
+        RESULT_VARIABLE tidy_exit_code
     )
     add_custom_target(${target} ALL DEPENDS ".nonesuch__")
+
+    if(NOT "${tidy_exit_code}" STREQUAL "0")
+        message(FATAL_ERROR "Clang-tidy reported errors!")
+    endif()
 endfunction(invoke_tidy)

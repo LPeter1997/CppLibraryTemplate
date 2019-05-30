@@ -32,7 +32,7 @@ def run_full_tidy(bin, script):
         end = len(m.group())
         content = content[end :]
         print(content)
-    print(retval)
+    retval = os.WEXITSTATUS(retval)
     sys.exit(retval)
 
 def run_diff_tidy(bin, script):
