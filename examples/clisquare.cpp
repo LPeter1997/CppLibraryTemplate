@@ -8,6 +8,7 @@
  * application that squares the argument and prints it.
  */
 
+#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <sample_library/sample_lib.hpp>
@@ -18,8 +19,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     char* end;
-    long num = std::strtol(argv[1], &end, 10); // NOLINT
-    long sq = samplib::square(num);
+    std::int64_t num = std::strtol(argv[1], &end, 10); // NOLINT
+    std::int64_t sq = samplib::square(num);
     std::printf("%ld\n", sq);
     return 0;
 }
