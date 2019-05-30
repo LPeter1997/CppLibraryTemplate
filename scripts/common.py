@@ -25,7 +25,12 @@ def is_branch(rx_name):
     if m == None:
         return (False, '')
     else:
-        return (True, m.group('version'))
+        ver = None
+        try:
+            ver = m.group('version')
+        except IndexError:
+            pass
+        return (True, ver)
 
 def is_dev_branch():
     return is_branch('BRANCH_DEVELOPMENT')
