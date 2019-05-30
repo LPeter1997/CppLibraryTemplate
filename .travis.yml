@@ -127,7 +127,7 @@ install:
   - ${CXX} -v
 
 script:
-  - mkdir -p build && cd build
+  - cd build
   # Generate and build
   # TODO: Why CMAKE_BUILD_TYPE=Release kill the debug flags?
   - cmake ${CMAKE_FLAGS} -DCMAKE_CXX_FLAGS="${CXXFLAGS}" ..

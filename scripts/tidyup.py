@@ -24,7 +24,11 @@ VER_PATCH = 0
 __version__ = f'{VER_MAJOR}.{VER_MINOR}.{VER_PATCH}'
 
 def run_full_tidy(bin, script):
-    os.system(f'{script} -clang-tidy-binary {bin} -header-filter=.*')
+    # Don't check return value, we let it pass on a full check
+    os.system(f'({script} -clang-tidy-binary {bin} -header-filter=.* -quiet) > tidy_out.txt')
+    with open('tidy_out.txt', 'r') as f:
+        content = f.read()
+        print(content)
 
 def run_diff_tidy(bin, script):
     # TODO
