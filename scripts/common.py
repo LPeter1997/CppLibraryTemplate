@@ -19,8 +19,6 @@ def current_branch():
 def is_branch(rx_name):
     cb = current_branch()
     rx = os.getenv(rx_name)
-    print(f'Current branch: {cb}')
-    print(f'Pattern: {rx}')
     m = re.match(rx, cb)
     if m == None:
         return (False, '')
