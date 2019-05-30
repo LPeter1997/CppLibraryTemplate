@@ -17,8 +17,9 @@ int main(int argc, char* argv[]) {
         std::printf("Usage: %s <integer>\n", argv[0]);
         return 1;
     }
-    int num = std::atoi(argv[1]);
-    int sq = samplib::square(num);
-    std::printf("%d\n", sq);
+    char* end;
+    long num = std::strtol(argv[1], &end, 10);
+    long sq = samplib::square(num);
+    std::printf("%l\n", sq);
     return 0;
 }
