@@ -34,9 +34,9 @@ function(invoke_tidy target)
     find_program_required(CLANG_TIDY_DIFF clang-tidy-diff-8.py)
 
     set(TIDY_ENV_VARS
-        BRANCH_MASTER="${BRANCH_MASTER}"
-        BRANCH_RELEASE="${BRANCH_RELEASE}"
-        BRANCH_DEVELOPMENT="${BRANCH_DEVELOPMENT}"
+        BRANCH_MASTER=${BRANCH_MASTER}
+        BRANCH_RELEASE=${BRANCH_RELEASE}
+        BRANCH_DEVELOPMENT=${BRANCH_DEVELOPMENT}
     )
 
     # Invoke the actual script
