@@ -1,2 +1,2 @@
-Checks: '*'
+Checks: '*',-cppcoreguidelines-pro-type-vararg,
 WarningsAsErrors: '*'

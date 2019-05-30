@@ -279,7 +279,7 @@ def process_file(libname, rootfile, fname, processed, is_excluded):
 
 def wrap_in_guars(libname, c):
     ln = c_macroify(libname)
-    return f'#ifndef {ln}\n#define {ln}\n\n{c}\n\n#endif /* {ln} */\n'
+    return f'#ifndef {ln} // NOLINT\n#define {ln} // NOLINT\n\n{c}\n\n#endif /* {ln} */ // NOLINT\n'
 
 def main():
     # Setting up command-line arguments
