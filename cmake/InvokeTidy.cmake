@@ -40,19 +40,15 @@ function(invoke_tidy target)
     )
 
     # Invoke the actual script
-    execute_process(
+    add_custom_command(
         COMMAND ${CMAKE_COMMAND} -E env ${TIDY_ENV_VARS}
             "${PYTHON_EXECUTABLE}" ${${PROJECT_NAME}_TIDY_SCRIPT}
                 --tidy-bin "${CLANG_TIDY}"
                 --run-tidy "${RUN_CLANG_TIDY}"
                 --run-diff "${CLANG_TIDY_DIFF}"
-        OUTPUT_FILE ".nonesuch__" # Just so we always run
+        OUTPUT ".nonesuch__" # Just so we always run
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        RESULT_VARIABLE tidy_exit_code
+        VERBATIM
     )
     add_custom_target(${target} ALL DEPENDS ".nonesuch__")
-
-    if(NOT "${tidy_exit_code}" STREQUAL "0")
-        message(FATAL_ERROR "Clang-tidy reported errors!")
-    endif()
 endfunction(invoke_tidy)
