@@ -28,7 +28,7 @@ def run_tidy(script):
 def run_tidy_branch(tidy_bin, diff_tidy, full_tidy):
     matched, projver = is_rel_branch()
     matched2, projver = is_master_branch()
-    if (not matched) and (not matched2):
+    if not (matched or matched2):
         # Run diff
         print('Not on master or release branch, running differential tidy-check!')
         run_tidy(diff_tidy)
