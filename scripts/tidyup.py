@@ -12,6 +12,7 @@
 """
 
 import argparse
+import os
 
 from common import *
 
@@ -22,8 +23,12 @@ VER_PATCH = 0
 
 __version__ = f'{VER_MAJOR}.{VER_MINOR}.{VER_PATCH}'
 
-def run_tidy(script):
-    pass
+def run_full_tidy(bin, script):
+    os.system(f'{script} -clang-tidy-binary {bin} -header-filter=.*')
+
+def run_diff_tidy(bin, script):
+    # TODO
+    os.system('')
 
 def run_tidy_branch(tidy_bin, diff_tidy, full_tidy):
     matched, projver = is_rel_branch()
@@ -31,11 +36,11 @@ def run_tidy_branch(tidy_bin, diff_tidy, full_tidy):
     if matched or matched2:
         # Run full
         print('On master or release branch, running full tidy-check!')
-        run_tidy(full_tidy)
+        run_full_tidy(tidy_bin, full_tidy)
     else:
         # Run diff
         print('Not on master or release branch, running differential tidy-check!')
-        run_tidy(diff_tidy)
+        run_diff_tidy(tidy_bin, diff_tidy)
 
 def main():
     # Setting up command-line arguments
