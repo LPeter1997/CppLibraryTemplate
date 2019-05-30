@@ -46,7 +46,6 @@ function(invoke_tidy target)
                 --tidy-bin "${CLANG_TIDY}"
                 --run-tidy "${RUN_CLANG_TIDY}"
                 --run-diff "${CLANG_TIDY_DIFF}"
-        DEPENDS ".nonesuch__"
         OUTPUT ".nonesuch__" # Just so we always run
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
         VERBATIM

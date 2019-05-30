@@ -25,7 +25,7 @@ __version__ = f'{VER_MAJOR}.{VER_MINOR}.{VER_PATCH}'
 def run_tidy(script):
     pass
 
-def run_tidy_branch(diff_tidy, full_tidy):
+def run_tidy_branch(tidy_bin, diff_tidy, full_tidy):
     matched, projver = is_rel_branch()
     matched2, projver = is_master_branch()
     if (not matched) or (not matched2):
@@ -68,7 +68,7 @@ def main():
     args = parser.parse_args()
 
     # We have all the arguments needed
-    # TODO
+    run_tidy_branch(args.tidy_bin, args.run_tidy, args.run_diff)
 
 # Start execution in main()
 if __name__ == "__main__":
