@@ -30,7 +30,7 @@ def run_diff_tidy(bin, script):
     # TODO
     os.system('')
 
-def run_tidy_branch(tidy_bin, diff_tidy, full_tidy):
+def run_tidy_branch(tidy_bin, full_tidy, diff_tidy):
     matched, projver = is_rel_branch()
     matched2, projver = is_master_branch()
     if matched or matched2:
