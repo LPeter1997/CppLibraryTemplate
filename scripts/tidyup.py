@@ -28,6 +28,9 @@ def run_full_tidy(bin, script):
     os.system(f'({script} -clang-tidy-binary {bin} -header-filter=.* -quiet) > tidy_out.txt')
     with open('tidy_out.txt', 'r') as f:
         content = f.read()
+        m = re.match(r'Enabled checks:(\r\n?|\n)(\s+.*(\r\n?|\n))*', content)
+        end = len(m.group())
+        content = content[end :]
         print(content)
 
 def run_diff_tidy(bin, script):
