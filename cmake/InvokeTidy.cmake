@@ -40,7 +40,7 @@ function(invoke_tidy target)
     )
 
     # Invoke the actual script
-    add_custom_command(
+    execute_process(
         COMMAND ${CMAKE_COMMAND} -E env ${TIDY_ENV_VARS}
             "${PYTHON_EXECUTABLE}" ${${PROJECT_NAME}_TIDY_SCRIPT}
                 --tidy-bin "${CLANG_TIDY}"
