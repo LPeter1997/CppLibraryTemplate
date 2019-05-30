@@ -28,14 +28,14 @@ def run_tidy(script):
 def run_tidy_branch(tidy_bin, diff_tidy, full_tidy):
     matched, projver = is_rel_branch()
     matched2, projver = is_master_branch()
-    if not (matched or matched2):
-        # Run diff
-        print('Not on master or release branch, running differential tidy-check!')
-        run_tidy(diff_tidy)
-    else:
+    if matched or matched2:
         # Run full
         print('On master or release branch, running full tidy-check!')
         run_tidy(full_tidy)
+    else:
+        # Run diff
+        print('Not on master or release branch, running differential tidy-check!')
+        run_tidy(diff_tidy)
 
 def main():
     # Setting up command-line arguments
