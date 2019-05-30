@@ -18,8 +18,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     char* end;
-    long num = std::strtol(argv[1], &end, 10);
+    long num = std::strtol(argv[1], &end, 10); // NOLINT
     long sq = samplib::square(num);
-    std::printf("%l\n", sq);
+    std::printf("%ld\n", sq);
     return 0;
 }
