@@ -18,6 +18,7 @@ def current_branch():
 
 def is_branch(rx_name):
     cb = current_branch()
+    print(f'Current branch: {cb}')
     rx = os.getenv(rx_name)
     m = re.match(rx, cb)
     if m == None:
