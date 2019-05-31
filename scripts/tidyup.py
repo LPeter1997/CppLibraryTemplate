@@ -33,6 +33,7 @@ def run_full_tidy(bin, script):
         content = content[end :]
         print(content)
     retval = os.WEXITSTATUS(retval)
+    print(f'Return value: {retval}')
     sys.exit(1)
 
 def run_diff_tidy(bin, script):
