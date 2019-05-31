@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     char* end;
-    std::int64_t num = std::strtol(argv[1], &end, 10);
+    std::int64_t num = std::strtol(argv[1], &end, 10); // NOLINT
     std::int64_t sq = samplib::square(num);
     std::printf("%ld\n", sq);
     return 0;
