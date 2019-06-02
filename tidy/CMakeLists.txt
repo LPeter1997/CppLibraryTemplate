@@ -8,6 +8,7 @@ find_program_required(CLANG_FORMAT clang-format)
 # Find the clang-format helper script
 #find_program_required(RUN_CLANG_FORMAT run-clang-format.py)
 # Find the clang-format-diff script
-message("CLANG FORMAT: ${CLANG_FORMAT}")
-find_file(CLANG_FORMAT_DIFF clang-format-diff.py PATHS "/usr/local/clang-7.0.0/bin/")
-message("CLANG FORMAT DIFF: ${CLANG_FORMAT_DIFF}")
+get_filename_component(CLANG_FORMAT_DIR "${CLANG_FORMAT}" DIRECTORY)
+message("Directory: ${CLANG_FORMAT_DIR}")
+file(GLOB DIR_CONT "*.*" RELATIVE "${CLANG_FORMAT_DIR}")
+message("Directory content: ${DIR_CONT}")
