@@ -97,6 +97,8 @@ matrix:
     # Test
     after_script:
       - find /usr -name 'clang-8' -type d
+      - cd /usr/share/doc/clang-8
+      - ls
       # Run tidy
     #  - make clang_tidy
   # Linux, Conan release
