@@ -94,7 +94,10 @@ matrix:
       - CMAKE_FLAGS="${CMAKE_FLAGS} -DTIDY_CHECK=ON"
     before_script:
       - pip install --user conan
-    #after_script:
+    # Test
+    after_script:
+      - cd /usr/local/clang-7.0.0/bin
+      - ls
       # Run tidy
     #  - make clang_tidy
   # Linux, Conan release
