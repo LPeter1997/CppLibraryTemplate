@@ -8,4 +8,4 @@ find_program_required(CLANG_FORMAT clang-format)
 # Find the clang-format helper script
 #find_program_required(RUN_CLANG_FORMAT run-clang-format.py)
 # Find the clang-format-diff script
-find_program_required(CLANG_FORMAT_DIFF clang-format-diff.py)
+find_program_required(CLANG_FORMAT_DIFF clang-format-diff.py PATHS "/usr/share/clang")
