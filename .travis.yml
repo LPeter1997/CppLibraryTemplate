@@ -96,7 +96,7 @@ matrix:
       - pip install --user conan
     # Test
     after_script:
-      - cd /usr/local/clang/bin
+      - cd /usr/local
       - ls
       # Run tidy
     #  - make clang_tidy
