@@ -10,5 +10,5 @@ find_program_required(CLANG_FORMAT clang-format)
 # Find the clang-format-diff script
 get_filename_component(CLANG_FORMAT_DIR "${CLANG_FORMAT}" DIRECTORY)
 message("Directory: ${CLANG_FORMAT_DIR}")
-file(GLOB DIR_CONT RELATIVE "${CLANG_FORMAT_DIR}" "{CLANG_FORMAT_DIR}/*.*")
-message("Directory content: ${DIR_CONT}")
+find_file(CLANG_FORMAT_DIFF "clang-format-diff.py" PATHS "${CLANG_FORMAT_DIR}")
+message("Script: ${CLANG_FORMAT_DIFF}")
