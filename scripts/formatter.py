@@ -39,7 +39,7 @@ def collect_source_files():
     files = []
     for p in dircont:
         for e in exts:
-            globpath = os.path.join(p, f'**.{e}')
+            globpath = os.path.join(p, f'**/*.{e}')
             files += glob.glob(globpath, recursive=True)
 
     # TODO: Just test
