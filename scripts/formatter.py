@@ -42,15 +42,12 @@ def collect_source_files():
             globpath = os.path.join(p, f'**/*.{e}')
             files += glob.glob(globpath, recursive=True)
 
-    # TODO: Just test
-    for f in files:
-        print(f'Source: {f}')
-
-    return None
+    return files
 
 def run_full_format(script):
     files = collect_source_files()
-    retval = os.system(f'({script} *.cpp *.h *.hpp) > format_out.txt')
+    files = ' '.join(files)
+    retval = os.system(f'({script} {files}) > format_out.txt')
     with open('format_out.txt', 'r') as f:
         content = f.read()
         #m = re.match(r'Enabled checks:(\r\n?|\n)(\s+.*(\r\n?|\n))*', content)
