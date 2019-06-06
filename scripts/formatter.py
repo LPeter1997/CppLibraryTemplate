@@ -25,29 +25,20 @@ VER_PATCH = 0
 
 __version__ = f'{VER_MAJOR}.{VER_MINOR}.{VER_PATCH}'
 
-def is_included_source(s):
+def is_included_directory(s):
     return s in ['examples', 'single_include', 'src']
 
-def collect_source_files():
+def collect_excludes():
     # Get current directory's content
     dircont = os.listdir('.')
     # Filter it
-    dircont = (x for x in dircont if is_included_source(x))
-    # Extensions
-    exts = ['cpp', 'h', 'hpp']
-    # Glob each
-    files = []
-    for p in dircont:
-        for e in exts:
-            globpath = os.path.join(p, f'**/*.{e}')
-            files += glob.glob(globpath, recursive=True)
-
-    return files
+    dircont = (x for x in dircont if not is_included_directory(x))
+    return dircont
 
 def run_full_format(script):
-    files = collect_source_files()
-    files = ' '.join(files)
-    retval = os.system(f'({script} {files}) > format_out.txt')
+    excludes = collect_excludes()
+    excludes = ' '.join((f'--exclude {x}' for x in excludes))
+    retval = os.system(f'({script} {files} -r . {excludes}) > format_out.txt')
     with open('format_out.txt', 'r') as f:
         content = f.read()
         #m = re.match(r'Enabled checks:(\r\n?|\n)(\s+.*(\r\n?|\n))*', content)
@@ -62,7 +53,7 @@ def run_diff_format(script):
     # retval = os.system(f'(git diff -U0 --no-color HEAD^ | {script} -p1) > format_out.txt')
     os.system('')
 
-def run_format_branch(full_format, diff_format):
+def run_format_branch(format_bin, full_format, diff_format):
     matched, projver = is_rel_branch()
     matched2, projver = is_master_branch()
     if matched or matched2:
@@ -96,6 +87,9 @@ def main():
     required_args.add_argument("-b", "--format-bin",
         help="specifies the path to the clang-format binary",
         required=True)
+    required_args.add_argument("-d", "--run-format",
+        help="specifies the path to the run-clang-format.py script",
+        required=True)
     required_args.add_argument("-d", "--run-diff",
         help="specifies the path to the clang-format-diff.py script",
         required=True)
@@ -103,7 +97,7 @@ def main():
     args = parser.parse_args()
 
     # We have all the arguments needed
-    run_format_branch(args.format_bin, args.run_diff)
+    run_format_branch(args.format_bin, args.run_format, args.run_diff)
 
 # Start execution in main()
 if __name__ == "__main__":

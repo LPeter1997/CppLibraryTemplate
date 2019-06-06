@@ -7,7 +7,7 @@
  # A CMake wrapper for the python formatter script.
  #
  # Usage:
- # invoke_tidy(<target>)
+ # invoke_format(<target>)
 ]]
 
 include(${CMAKE_SOURCE_DIR}/cmake/FindProgramRequired.cmake)
@@ -26,9 +26,11 @@ function(invoke_format target)
     # Need python 3.6 for the merge script
     find_package(PythonInterp 3.6 REQUIRED)
 
-    # Find the clang-tidy binary
+    # Find the clang-format binary
     find_program_required(CLANG_FORMAT clang-format)
-    # Find the clang-tidy helper script
+    # Find the run-clang-format helper script
+    find_program_required(RUN_CLANG_FORMAT run-clang-format.py PATHS "${CMAKE_SOURCE_DIR}/scripts")
+    # Find the clang-format helper script
     find_program_required(CLANG_FORMAT_DIFF clang-format-diff-8)
 
     set(FORMAT_ENV_VARS
@@ -42,6 +44,7 @@ function(invoke_format target)
         COMMAND ${CMAKE_COMMAND} -E env ${FORMAT_ENV_VARS}
             "${PYTHON_EXECUTABLE}" ${${PROJECT_NAME}_FORMAT_SCRIPT}
                 --format-bin "${CLANG_FORMAT}"
+                --run-format "${RUN_CLANG_FORMAT}"
                 --run-diff "${CLANG_FORMAT_DIFF}"
         OUTPUT ".nonesuch__" # Just so we always run
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
