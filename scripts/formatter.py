@@ -12,6 +12,7 @@
 """
 
 import argparse
+import glob
 import os
 import sys
 
@@ -24,10 +25,24 @@ VER_PATCH = 0
 
 __version__ = f'{VER_MAJOR}.{VER_MINOR}.{VER_PATCH}'
 
+def is_included_source(s):
+    return s in ['examples', 'single_include', 'src']
+
+def collect_source_files():
+    # Get current directory's content
+    dircont = os.listdir('.')
+    # Filter it
+    dircont = (x for x in dirconf if is_included_source(x))
+    # Glob each
+    # TODO
+    for p in dircont:
+        print(f'Looking at: {p}')
+
+    return None
+
 def run_full_format(script):
+    files = collect_source_files()
     retval = os.system(f'({script} *.cpp *.h *.hpp) > format_out.txt')
-    # Testing
-    os.system(f'{script} *.cpp *.h *.hpp')
     with open('format_out.txt', 'r') as f:
         content = f.read()
         #m = re.match(r'Enabled checks:(\r\n?|\n)(\s+.*(\r\n?|\n))*', content)
