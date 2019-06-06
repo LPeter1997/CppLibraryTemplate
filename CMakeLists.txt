@@ -36,6 +36,7 @@ prefixed_option(BUILD_TESTS    "Build tests that are usable with ctest"         
 prefixed_option(COVERAGE       "Configure build for coverage"                     OFF)
 prefixed_option(DEPLOY_CONAN   "Deploy to conan (makes everything else disabled)" OFF)
 prefixed_option(TIDY_CHECK     "Check the code with clang-tidy"                   OFF)
+prefixed_option(FORMAT         "Auto-format code with clang-format"               OFF)
 
 # Default to Debug
 if(NOT CMAKE_BUILD_TYPE)
@@ -93,4 +94,9 @@ endif()
 if (${${PROJECT_NAME}_TIDY_CHECK})
     # Tidy
     add_subdirectory(tidy)
+endif()
+
+if (${${PROJECT_NAME}_FORMAT})
+    # Format
+    add_subdirectory(format)
 endif()

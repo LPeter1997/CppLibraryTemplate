@@ -1,16 +1,3 @@
 include(${CMAKE_SOURCE_DIR}/cmake/InvokeTidy.cmake)
 
 invoke_tidy(clang_tidy)
-
-# TESTING
-# Find the clang-format binary
-find_program_required(CLANG_FORMAT clang-format)
-# Find the clang-format helper script
-#find_program_required(RUN_CLANG_FORMAT run-clang-format.py)
-# Find the clang-format-diff script
-get_filename_component(CLANG_FORMAT_DIR "${CLANG_FORMAT}" DIRECTORY)
-message("Directory: ${CLANG_FORMAT_DIR}")
-find_file(CLANG_FORMAT_DIFF "clang-format-diff")
-find_file(CLANG_FORMAT_DIFF_8 "clang-format-diff-8")
-message("Script: ${CLANG_FORMAT_DIFF}")
-message("Script-8: ${CLANG_FORMAT_DIFF_8}")
