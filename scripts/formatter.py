@@ -87,7 +87,7 @@ def main():
     required_args.add_argument("-b", "--format-bin",
         help="specifies the path to the clang-format binary",
         required=True)
-    required_args.add_argument("-d", "--run-format",
+    required_args.add_argument("-r", "--run-format",
         help="specifies the path to the run-clang-format.py script",
         required=True)
     required_args.add_argument("-d", "--run-diff",
