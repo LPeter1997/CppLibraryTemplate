@@ -32,7 +32,7 @@ def collect_source_files():
     # Get current directory's content
     dircont = os.listdir('.')
     # Filter it
-    dircont = (x for x in dirconf if is_included_source(x))
+    dircont = (x for x in dircont if is_included_source(x))
     # Glob each
     # TODO
     for p in dircont:
