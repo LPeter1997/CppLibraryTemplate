@@ -38,7 +38,7 @@ def collect_excludes():
 def run_full_format(script):
     excludes = collect_excludes()
     excludes = ' '.join((f'--exclude {x}' for x in excludes))
-    retval = os.system(f'({script} {files} -r . {excludes}) > format_out.txt')
+    retval = os.system(f'({script} -r {excludes} .) > format_out.txt')
     with open('format_out.txt', 'r') as f:
         content = f.read()
         #m = re.match(r'Enabled checks:(\r\n?|\n)(\s+.*(\r\n?|\n))*', content)
