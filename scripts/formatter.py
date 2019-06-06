@@ -33,10 +33,18 @@ def collect_source_files():
     dircont = os.listdir('.')
     # Filter it
     dircont = (x for x in dircont if is_included_source(x))
+    # Extensions
+    exts = ['cpp', 'h', 'hpp']
     # Glob each
-    # TODO
+    files = []
     for p in dircont:
-        print(f'Looking at: {p}')
+        for e in exts:
+            globpath = os.path.join(p, f'*.{e}')
+            files += glob.glob(globpath, recursive=True)
+
+    # TODO: Just test
+    for f in files:
+        print(f'Source: {f}')
 
     return None
 
