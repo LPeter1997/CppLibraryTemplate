@@ -44,7 +44,7 @@ function(invoke_format target)
                 --format-bin "${CLANG_FORMAT}"
                 --run-diff "${CLANG_FORMAT_DIFF}"
         OUTPUT ".nonesuch__" # Just so we always run
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         VERBATIM
     )
     add_custom_target(${target} ALL DEPENDS ".nonesuch__")
