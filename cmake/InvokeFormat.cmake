@@ -29,7 +29,7 @@ function(invoke_format target)
     # Find the clang-tidy binary
     find_program_required(CLANG_FORMAT clang-format)
     # Find the clang-tidy helper script
-    find_program_required(CLANG_FORMAT_DIFF run-clang-format-8)
+    find_program_required(CLANG_FORMAT_DIFF clang-format-diff-8)
 
     set(FORMAT_ENV_VARS
         BRANCH_MASTER=${BRANCH_MASTER}
