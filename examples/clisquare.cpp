@@ -13,7 +13,8 @@
 #include <cstdlib>
 #include <sample_library/sample_lib.hpp>
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
     if (argc != 2) {
         std::printf("Usage: %s <integer>\n", argv[0]);
         return 1;
