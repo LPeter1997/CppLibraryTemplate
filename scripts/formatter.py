@@ -25,7 +25,7 @@ VER_PATCH = 0
 __version__ = f'{VER_MAJOR}.{VER_MINOR}.{VER_PATCH}'
 
 def run_full_format(script):
-    retval = os.system(f'({script}) > format_out.txt')
+    retval = os.system(f'({script} *.cpp *.h *.hpp) > format_out.txt')
     with open('format_out.txt', 'r') as f:
         content = f.read()
         #m = re.match(r'Enabled checks:(\r\n?|\n)(\s+.*(\r\n?|\n))*', content)
