@@ -94,9 +94,11 @@ endif()
 if (${${PROJECT_NAME}_TIDY_CHECK})
     # Tidy
     add_subdirectory(tidy)
+    add_dependencies(clang_tidy lib_header)
 endif()
 
 if (${${PROJECT_NAME}_FORMAT})
     # Format
     add_subdirectory(format)
+    add_dependencies(clang_format lib_header)
 endif()
